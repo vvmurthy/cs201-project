@@ -4,7 +4,7 @@
 <html>
 	<head>
 		<meta charset="ISO-8859-1">
-		<title>Insert title here</title>
+		<title>Roommate Match</title>
 		<link rel="stylesheet" type="text/css" href="./CSS/signin.css">
 	</head>
 	<body>

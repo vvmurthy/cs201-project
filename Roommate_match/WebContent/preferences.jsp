@@ -5,7 +5,7 @@
 	<head>
 		<meta charset="ISO-8859-1">
 		<title>Roommate Match</title>
-		<link rel="stylesheet" type="text/css" href="./CSS/register.css">
+		<link rel="stylesheet" type="text/css" href="./CSS/preferences.css">
 	</head>
 	<body>
 
