@@ -33,8 +33,8 @@ public class SignInServlet extends HttpServlet {
 		Statement st = null; 
 		ResultSet rs = null; 
 		PreparedStatement ps = null; 
-		String obtainedUser; 
-		String obtainedPass; 
+		String obtainedUser = null; 
+		String obtainedPass = null; 
 		try {
 				Class.forName("com.mysql.cj.jdbc.Driver"); 
 				conn = DriverManager.getConnection("jdbc:mysql://localhost/UserInfo?user=root&password=root&useSSL=false");
