@@ -15,6 +15,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import utilities.SqlDriver;
+
 @WebServlet("/SignInServlet")
 public class SignInServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -26,25 +28,25 @@ public class SignInServlet extends HttpServlet {
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 		response.setContentType("text/html"); 
-		String username = request.getParameter("username");
+		String username = request.getParameter("email");
 		String password = request.getParameter("password");
 		
 		Connection conn = null;
 		Statement st = null; 
 		ResultSet rs = null; 
 		PreparedStatement ps = null; 
-		String obtainedUser; 
-		String obtainedPass; 
+		String obtainedUser = null; 
+		String obtainedPass = null; 
 		try {
-				Class.forName("com.mysql.cj.jdbc.Driver"); 
-				conn = DriverManager.getConnection("jdbc:mysql://localhost/UserInfo?user=root&password=root&useSSL=false");
-				String statement = "SELECT * FROM users WHERE username LIKE " + "\"" + username + "\"" + 
-						"AND password LIKE " + "\"" + password + "\""; 
+				Class.forName("com.mysql.jdbc.Driver"); 
+				conn = DriverManager.getConnection("jdbc:mysql://localhost/"+ SqlDriver.DATABASE + "?user=root&password=root&useSSL=false");
+				String statement = "SELECT * FROM " + SqlDriver.userTable + " WHERE email LIKE " + "\"" + username + "\"" + 
+						"AND user_password LIKE " + "\"" + password + "\""; 
 				ps = conn.prepareStatement(statement);
 				rs = ps.executeQuery();
 				while (rs.next()) {
-					obtainedUser = rs.getString("username"); 
-					obtainedPass = rs.getString("password");
+					obtainedUser = rs.getString("email"); 
+					obtainedPass = rs.getString("user_password");
 				}
 				   
 				
