@@ -8,6 +8,8 @@
 		<link rel="stylesheet" type="text/css" href="./CSS/signin.css">
 	</head>
 	<body>
+	
+		<button><a href="register.jsp"> Not a user? Register </a></button>
 
 	</body>
 </html>
