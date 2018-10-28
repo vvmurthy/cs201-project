@@ -10,7 +10,7 @@
 	<body>
 	<div id="registerForm">
 			<form id = "rForm" method= "post" enctype="multipart/form-data" action="RegistrationServlet">
-			<table border="0">
+			<table style="border:0;">
 				<tr>
 					<td>Name: </td>
 					<td><input type ="text" name = "name" placeholder="Enter Name" id=username></td>
