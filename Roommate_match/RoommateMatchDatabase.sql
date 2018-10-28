@@ -4,12 +4,11 @@ CREATE DATABASE RoommateMatch;
 USE RoommateMatch;
 
 CREATE TABLE UserInfo(
-	userID INT(11) PRIMARY KET AUTO_INCREMENT,
+	UserID INT(11) PRIMARY KET AUTO_INCREMENT,
     email VARCHAR(100) NOT NULL UNIQUE,
-    fname VARCHAR(50) NOT NULL,
-    lname VARCHAR(50) NOT NULL,
-    pic VARCHAR(250) NOT NULL,
-    password VARCHAR(25) NOT NULL,
+    fullname VARCHAR(50) NOT NULL,
+    profile_pic_link VARCHAR(250) NOT NULL,
+    user_password VARCHAR(64) NOT NULL,
     hometown VARCHAR(50) NOT NULL,
     currentTown VARCHAR(50) NOT NULL,
     bio VARCHAR(500) NOT NULL

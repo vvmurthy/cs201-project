@@ -11,6 +11,9 @@ import java.util.List;
 
 public class SqlDriver {
 	
+	public static final String DATABASE = "RoommateMatch";
+	public static final String userTable = "UserInfo";
+	
 	public static boolean existsEmail(String email) {
 		Connection conn = null;
 		PreparedStatement st = null; 
@@ -20,10 +23,10 @@ public class SqlDriver {
 		
 		try {
 			Class.forName("com.mysql.jdbc.Driver"); 
-			conn = DriverManager.getConnection("jdbc:mysql://localhost/UserInfo?user=root&password=root&useSSL=false");
+			conn = DriverManager.getConnection("jdbc:mysql://localhost/"+  DATABASE +"?user=root&password=root&useSSL=false");
 			
 			
-			st = conn.prepareStatement("Select * from users where email=(?)");
+			st = conn.prepareStatement("Select * from " + userTable + " where email=(?)");
 			st.setString(1, email);
 			
 			rs = st.executeQuery();
@@ -59,9 +62,9 @@ public class SqlDriver {
 		
 		try {
 			Class.forName("com.mysql.jdbc.Driver"); 
-			conn = DriverManager.getConnection("jdbc:mysql://localhost/UserInfo?user=root&password=root&useSSL=false");
+			conn = DriverManager.getConnection("jdbc:mysql://localhost/" + DATABASE + "?user=root&password=root&useSSL=false");
 			
-			st = conn.prepareStatement("INSERT into users (fullname, email, profile_pic_link, user_password) values (?, ?, ?, ?)");
+			st = conn.prepareStatement("INSERT into "+userTable + "(fullname, email, profile_pic_link, user_password) values (?, ?, ?, ?)");
 			st.setString(1, name);
 			st.setString(2, email);
 			st.setString(3, fileName);
