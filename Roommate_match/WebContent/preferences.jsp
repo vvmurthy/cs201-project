@@ -8,6 +8,15 @@
 		<link rel="stylesheet" type="text/css" href="./CSS/preferences.css">
 	</head>
 	<body>
-
+		<h1>Lifestyle Preferences</h1>
+		<form action="./PreferencesServlet" method="POST">
+			<table>
+				<tr>
+					<td>
+						<input />
+					</td>
+				</tr>
+			</table>
+		</form>
 	</body>
 </html>
