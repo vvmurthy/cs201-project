@@ -8,10 +8,10 @@ CREATE TABLE UserInfo(
     email VARCHAR(100) NOT NULL UNIQUE,
     fullname VARCHAR(50) NOT NULL,
     profile_pic_link VARCHAR(250) NOT NULL,
-    user_password VARCHAR(64) NOT NULL,
-    hometown VARCHAR(50) NOT NULL,
-    currentTown VARCHAR(50) NOT NULL,
-    bio VARCHAR(500) NOT NULL
+    user_password BINARY(64) NOT NULL,
+    hometown VARCHAR(50),
+    currentTown VARCHAR(50),
+    bio VARCHAR(500)
 );
 
 CREATE TABLE Preferences (
@@ -22,7 +22,7 @@ CREATE TABLE Preferences (
     weekdaySleep VARCHAR(10) NOT NULL,
     weekdayWake VARCHAR(10) NOT NULL,
     weekendSleep VARCHAR(50) NOT NULL,
-    weekendWake VARCHAR(50) NO NULL,
+    weekendWake VARCHAR(50) NOT NULL,
     genderPref INT(3) NOT NULL,
     gender INT(1) NOT NULL,
     costPref INT(6) NOT NULL,
