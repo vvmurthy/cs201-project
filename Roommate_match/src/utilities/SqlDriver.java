@@ -64,7 +64,7 @@ public class SqlDriver {
 			Class.forName("com.mysql.jdbc.Driver"); 
 			conn = DriverManager.getConnection("jdbc:mysql://localhost/" + DATABASE + "?user=root&password=root&useSSL=false");
 			
-			st = conn.prepareStatement("INSERT into "+userTable + "(fullname, email, profile_pic_link, user_password) values (?, ?, ?, ?)");
+			st = conn.prepareStatement("INSERT into "+userTable + "(fullname, email, profile_pic_link, user_password) values (?, ?, ?, SHA1(?))");
 			st.setString(1, name);
 			st.setString(2, email);
 			st.setString(3, fileName);
