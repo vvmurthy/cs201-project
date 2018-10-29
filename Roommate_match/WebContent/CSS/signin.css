@@ -1,1 +1,18 @@
 @charset "ISO-8859-1";
+
+body {
+	font-family: American Typewriter;
+	background-color: grey;
+	text-align: center;
+}
+
+h1{
+	text-align: center;
+}
+
+
+table {
+	text-align: center;
+	background-color: black;
+	padding: 10px;
+}
