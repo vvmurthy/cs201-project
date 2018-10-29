@@ -16,6 +16,13 @@ public class PreferencesServlet extends HttpServlet {
     }
 
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		
+		// Get parameters
+		
+		
+		
+		// Send 
+		
+		
 	}
 }
