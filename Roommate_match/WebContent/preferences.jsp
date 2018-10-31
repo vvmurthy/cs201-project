@@ -62,6 +62,18 @@
 					studentQs[i].style.display = display;
 				}
 			}
+			function frequency(val) {
+				switch(val) {
+					case 0:
+						return "Never or rarely";
+					case 1:
+						return "Occasionally";
+					case 2:
+						return "Every few days";
+					case 3:
+						return "Almost every day";
+				}
+			}
 		</script>
 	</head>
 	<body>
@@ -80,6 +92,11 @@
 						<h3 class="studentQ preferenceLabel">Are you in Greek life?</h3>
 						<input type="radio" name="isGreek" class="studentQ" value="1" required /><span class="studentQ">Yes</span>
 						<input type="radio" name="isGreek" class="studentQ" value="0" /><span class="studentQ">No</span>
+					</td>
+					<td>
+						<h3 class="preferenceLabel"> What is your age? </h3>
+						<input type="range" name="age" min="16" max="70" value="20" oninput="ageValue.value = age.value + ' years'"/>
+						<output name="ageValue" for="age">20 years</output>
 					</td>
 				</tr>
 				<tr>
@@ -141,8 +158,61 @@
 					<td>
 						<h3 class="preferenceLabel"> Select any allergies you have (ctrl+click for multiple)</h3>
 						<select name="allergies" multiple>
-							<!-- TODO put options here -->
+							<!-- TODO add allergies -->
 						</select>
+					</td>
+					<td>
+						<h3 class="preferenceLabel"> Select the languages you can speak (ctrl+click for multiple)</h3>
+						<select name="languages" multiple required>
+							<option value="english" selected> English </option>
+							<!-- TODO add languages -->
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<h3 class="preferenceLabel"> Where would you like to search for roommates? </h3>
+						<!-- TODO add location selection -->
+					</td>
+					<td>
+						<h3 class="preferenceLabel"> How far from this location should we search for roommates? (radius)</h3>
+						<input type="range" name="radius" min="5" max="100" value="50" oninput="radiusValue.value = radius.value + ' miles'" />
+						<output name="radiusValue" for="radius">50 miles</output>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<h3 class="preferenceLabel"> What types of rooms are you looking for? (ctrl+click for multiple)</h3>
+						<select name="roomType" multiple required>
+							<option value="studio"> Studio </option>
+							<option value="single"> Single </option>
+							<option value="double"> Double </option>
+							<option value="loft"> Loft </option>
+						</select>
+					</td>
+					<td>
+						<h3 class="preferenceLabel"> How long do you plan to live in this room? </h3>
+						<input type="range" name="stayLength" min="1" max="24" value="6" oninput="stayLengthValue.value = stayLength.value + ' months'"/>
+						<output name="stayLengthValue" for="stayLength">6 months</output>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<h3 class="preferenceLabel"> Are pets allowed? </h3>
+						<input type="radio" name="pets" value="1" required> Yes
+						<input type="radio" name="pets" value="0"> No
+					</td>
+					<td>
+						<h3 class="preferenceLabel"> Is smoking tobacco allowed? </h3>
+						<input type="radio" name="smoking" value="1" required> Yes
+						<input type="radio" name="smoking" value="0"> No
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<h3 class="preferenceLabel"> How often do you drink alcohol? </h3>
+						<input type="range" name="drinkingFrq" min="0" max="3" value="0" oninput="drinkingFrqValue.value = frequency(drinkingFrq.valueAsNumber)"/>
+						<output name="drinkingFrqValue" for="drinkingFrq"> Never or rarely</output>
 					</td>
 				</tr>
 			</table>
