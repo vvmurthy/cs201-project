@@ -6,72 +6,13 @@
 		<meta charset="ISO-8859-1">
 		<title>Roommate Match</title>
 		<link rel="stylesheet" type="text/css" href="./CSS/preferences.css">
+		<script src="JS/rangeSliderValues.js"></script>
 		<script>
-			function nightTimes(val) {
-				switch(val) {
-					case 0:
-						return "8:00pm";
-					case 1:
-						return "9:00pm";
-					case 2:
-						return "10:00pm";
-					case 3:
-						return "11:00pm";
-					case 4:
-						return "12:00am";
-					case 5:
-						return "1:00am";
-					case 6:
-						return "2:00am";
-				}
-			}
-			function morningTimes(val) {
-				switch(val) {
-					case 0:
-						return "6:00am";
-					case 1:
-						return "7:00am";
-					case 2:
-						return "8:00am";
-					case 3:
-						return "9:00am";
-					case 4:
-						return "10:00am";
-					case 5:
-						return "11:00am";
-					case 6:
-						return "12:00pm";
-				}
-			}
-			function comfortableFrq(val) {
-				switch(val) {
-					case 0:
-						return "Rarely";
-					case 1:
-						return "Sometimes";
-					case 2:
-						return "Usually";
-					case 3:
-						return "Any time";
-				}
-			}
 			function toggleStudentQ(student) {
 				var studentQs = document.getElementsByClassName("studentQ");
 				var display = student==true ? "" : "none";
 				for (var i = 0; i < studentQs.length; i++) {
 					studentQs[i].style.display = display;
-				}
-			}
-			function frequency(val) {
-				switch(val) {
-					case 0:
-						return "Never or rarely";
-					case 1:
-						return "Occasionally";
-					case 2:
-						return "Every few days";
-					case 3:
-						return "Almost every day";
 				}
 			}
 		</script>
@@ -95,38 +36,38 @@
 					</td>
 					<td>
 						<h3 class="preferenceLabel"> What is your age? </h3>
-						<input type="range" name="age" min="16" max="70" value="20" oninput="ageValue.value = age.value + ' years'"/>
+						<input type="range" class="slider" name="age" min="16" max="70" value="20" oninput="ageValue.value = age.value + ' years'"/>
 						<output name="ageValue" for="age">20 years</output>
 					</td>
 				</tr>
 				<tr>
 					<td>
 						<h3 class="preferenceLabel">Weekday sleeping time</h3>
-						<input type="range" name="weekdaySleep" min="0" max="6" value="3" oninput="weekdaySleepValue.value = nightTimes(weekdaySleep.valueAsNumber);"/>
+						<input type="range" class="slider" name="weekdaySleep" min="0" max="6" value="3" oninput="weekdaySleepValue.value = nightTimes(weekdaySleep.valueAsNumber);"/>
 						<output name="weekdaySleepValue" for="weekdaySleep">11:00pm</output>
 					</td>
 					<td>
 						<h3 class="preferenceLabel">Weekday waking time</h3>
-						<input type="range" name="weekdayWake" min="0" max="6" value="3" oninput="weekdayWakeValue.value = morningTimes(weekdayWake.valueAsNumber);"/>
+						<input type="range" class="slider" name="weekdayWake" min="0" max="6" value="3" oninput="weekdayWakeValue.value = morningTimes(weekdayWake.valueAsNumber);"/>
 						<output name="weekdayWakeValue" for="weekdayWake">9:00am</output>
 					</td>
 				</tr>
 				<tr>
 					<td>
 						<h3 class="preferenceLabel">Weekend sleeping time</h3>
-						<input type="range" name="weekendSleep" min="0" max="6" value="3" oninput="weekendSleepValue.value = nightTimes(weekendSleep.valueAsNumber);"/>
+						<input type="range" class="slider" name="weekendSleep" min="0" max="6" value="3" oninput="weekendSleepValue.value = nightTimes(weekendSleep.valueAsNumber);"/>
 						<output name="weekendSleepValue" for="weekendSleep">11:00pm</output>
 					</td>
 					<td>
 						<h3 class="preferenceLabel">Weekend waking time</h3>
-						<input type="range" name="weekendWake" min="0" max="6" value="3" oninput="weekendWakeValue.value = morningTimes(weekendWake.valueAsNumber);"/>
+						<input type="range" class="slider" name="weekendWake" min="0" max="6" value="3" oninput="weekendWakeValue.value = morningTimes(weekendWake.valueAsNumber);"/>
 						<output name="weekendWakeValue" for="weekendWake">9:00am</output>
 					</td>
 				</tr>
 				<tr>
 					<td>
 						<h3 class="preferenceLabel">How often can guests come over?</h3>
-						<input type="range" name="guestPref" min="0" max="3" value="1" oninput="guestPrefValue.value = comfortableFrq(guestPref.valueAsNumber);" />
+						<input type="range" class="slider" name="guestPref" min="0" max="3" value="1" oninput="guestPrefValue.value = comfortableInvite(guestPref.valueAsNumber);" />
 						<output name="guestPrefValue" for="guestPref">Sometimes</output>
 					</td>
 				</tr>
@@ -176,7 +117,7 @@
 					</td>
 					<td>
 						<h3 class="preferenceLabel"> How far from this location should we search for roommates? (radius)</h3>
-						<input type="range" name="radius" min="5" max="100" value="50" oninput="radiusValue.value = radius.value + ' miles'" />
+						<input type="range" class="slider" name="radius" min="5" max="100" value="50" oninput="radiusValue.value = radius.value + ' miles'" />
 						<output name="radiusValue" for="radius">50 miles</output>
 					</td>
 				</tr>
@@ -192,7 +133,7 @@
 					</td>
 					<td>
 						<h3 class="preferenceLabel"> How long do you plan to live in this room? </h3>
-						<input type="range" name="stayLength" min="1" max="24" value="6" oninput="stayLengthValue.value = stayLength.value + ' months'"/>
+						<input type="range" class="slider" name="stayLength" min="1" max="24" value="6" oninput="stayLengthValue.value = stayLength.value + ' months'"/>
 						<output name="stayLengthValue" for="stayLength">6 months</output>
 					</td>
 				</tr>
@@ -202,20 +143,33 @@
 						<input type="radio" name="pets" value="1" required> Yes
 						<input type="radio" name="pets" value="0"> No
 					</td>
+				</tr>
+				<tr>
 					<td>
 						<h3 class="preferenceLabel"> Is smoking tobacco allowed? </h3>
 						<input type="radio" name="smoking" value="1" required> Yes
 						<input type="radio" name="smoking" value="0"> No
 					</td>
-				</tr>
-				<tr>
 					<td>
 						<h3 class="preferenceLabel"> How often do you drink alcohol? </h3>
-						<input type="range" name="drinkingFrq" min="0" max="3" value="0" oninput="drinkingFrqValue.value = frequency(drinkingFrq.valueAsNumber)"/>
+						<input type="range" class="slider" name="drinkingFrq" min="0" max="3" value="0" oninput="drinkingFrqValue.value = frequency(drinkingFrq.valueAsNumber)"/>
 						<output name="drinkingFrqValue" for="drinkingFrq"> Never or rarely</output>
 					</td>
 				</tr>
+				<tr>
+					<td>
+						<h3 class="preferenceLabel"> How clean will you keep your living space? </h3>
+						<input type="range" class="slider" name="cleanliness" min="0" max="3" value="2" oninput="cleanlinessValue.value = howClean(cleanliness.valueAsNumber);"/>
+						<output name="cleanlinessValue" for="cleanliness"> Usually clean </output>
+					</td>
+					<td>
+						<h3 class="preferenceLabel"> Are you comfortable with sharing your belongings? </h3>
+						<input type="radio" name="sharing" value="1" required> Yes
+						<input type="radio" name="sharing" value="0"> No
+					</td>
+				</tr>
 			</table>
+			<input type="submit" id="submit" value="Save" />
 		</form>
 	</body>
 </html>
