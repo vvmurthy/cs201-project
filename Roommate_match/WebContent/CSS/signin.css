@@ -1,18 +1,102 @@
 @charset "ISO-8859-1";
 
 body {
-	font-family: American Typewriter;
+	font-family: 'Antic Didone';
 	background-color: grey;
 	text-align: center;
 }
 
 h1{
+	font-family: 'Antic Didone';
 	text-align: center;
+	color: white;
+	size: 200px;
+}
+
+tr{
+	width: 400px;
+	height: 40px;
+}
+tr:nth-of-type(2), tr:nth-of-type(1){
+	font-family: 'Antic Didone';
+	line-height: 3em;
+	padding: 40px;
+	bottom-border: 10px;
+  	background: white;
+}
+
+tr:nth-of-type(3){
+	font-family: 'Antic Didone';
+	padding: 40px;
+	bottom-border: 10px;
+  	background: #FFD700;
+}
+
+#submit{
+	font-family: 'Antic Didone';
+	color: grey;
+	font-size: 15px;
+	border: none;
+	background: none;
+	
+}
+
+#registerButton{
+	font-family: 'Antic Didone';
+	color: #FFD700;
+	font-size: 15px;
+	border: none;
+	background: none;
+	
+}
+
+a{
+	color: #FFD700;
+	text-decoration: none;
+}
+
+a:hover, a:focus {
+    text-decoration:underline;
+}
+
+tr:nth-of-type(4){
+	font-family: 'Antic Didone';
+	background: grey;
+    color: #FFD700;
+    font-family: American Typewriter;
 }
 
 
+table table tr:nth-of-type(1) td:first-of-type{
+  background: grey;
+}
 table {
+	font-family: 'Antic Didone';
+	width:40%; 
+    margin-left:30%; 
+    margin-right:30%;
+    margin-top: 10%;
+    margin-bottom: 60%;
+    height: 30%;
 	text-align: center;
-	background-color: black;
-	padding: 10px;
+	background-color: grey;
+	border-collapse:separate; 
+    border-spacing:5px;
+}
+
+::placeholder { 
+	font-family: 'Antic Didone';
+	font-size: 16px;
+    color: #FFD700;
+    text-align: center;
+}
+
+#box{
+	width:50%; 
+    margin-left:25%; 
+    margin-right:25%;
+    height: 320px;
+	border-style: dotted;
+	border-width: thin;
+	border-color: #FFD700;
 }
