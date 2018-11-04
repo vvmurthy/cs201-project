@@ -86,11 +86,10 @@ public class RegistrationServlet extends HttpServlet {
 			dispatch.forward(request, response);
 		}else {
 			// Insert data into users
-			new Thread(() -> {
-				SqlDriver.uploadToDatabase(fullName, password1, email, fl.getAbsolutePath());
-			}).start();
+			int id = SqlDriver.uploadToDatabase(fullName, password1, email, fl.getAbsolutePath());
 			
 			RequestDispatcher dispatch = getServletContext().getRequestDispatcher("/preferences.jsp");
+			request.setAttribute("userId", id);
 			dispatch.forward(request, response);
 		}
 	}

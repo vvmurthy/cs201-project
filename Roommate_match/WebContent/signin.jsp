@@ -12,13 +12,13 @@
 		<form method="POST" action="SignInServlet">
 			<table>
 				<tr>
-					<td><input id="email" type="text" placeholder="Enter Email" value="${param.email}"/>
+					<td><input id="email" type="text" name="email" placeholder="Enter Email" value="${param.email}"/>
 				</tr>
 				<tr>
-					<td><input id="password" type="password" placeholder="Enter Password" value="${param.password}"/>
+					<td><input id="password" type="password" name="password" placeholder="Enter Password" value="${param.password}"/>
 				</tr>
 				<tr>
-					<td><input id="submi" type="submit" value="Sign in"/></td>
+					<td><input id="submit" type="submit" value="Sign in"/></td>
 				</tr>
 				<tr>
 					<td><button><a href="register.jsp"> Not a user? Register </a></button></td>

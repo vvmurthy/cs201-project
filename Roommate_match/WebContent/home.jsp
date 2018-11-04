@@ -14,6 +14,6 @@
 		<h3> Think local, act global. </h3>
 		
 		<button><a href="signin.jsp"> SIGN IN </a></button>
-		<button>CONTINUE AS GUEST</button>
+		<button><a href="preferences.jsp">CONTINUE AS GUEST</a></button>
 	</body>
 </html>

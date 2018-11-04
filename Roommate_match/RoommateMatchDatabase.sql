@@ -8,7 +8,7 @@ CREATE TABLE UserInfo(
     email VARCHAR(100) NOT NULL UNIQUE,
     fullname VARCHAR(50) NOT NULL,
     profile_pic_link VARCHAR(250) NOT NULL,
-    user_password BINARY(64) NOT NULL,
+    user_password VARCHAR(64) NOT NULL,
     hometown VARCHAR(50),
     currentTown VARCHAR(50),
     bio VARCHAR(500)
@@ -17,8 +17,9 @@ CREATE TABLE UserInfo(
 CREATE TABLE Preferences (
 	preferenceID INT(11) PRIMARY KEY AUTO_INCREMENT,
     userID INT(11) NOT NULL,
+    isStudent BIT not NULL,
     studentMajor VARCHAR(50),
-    studendGreek BIT(1) NOT NULL,
+    studendGreek BIT NOT NULL,
     weekdaySleep time NOT NULL,
     weekdayWake time NOT NULL,
     weekendSleep time NOT NULL,
@@ -31,7 +32,7 @@ CREATE TABLE Preferences (
     mapsRadius INT(11) NULL,
     roomType VARCHAR(10) NOT NULL,
     lengthStay INT(3) NOT NULL,
-    ageGroup INT(2) NOT NULL,
+    age INT(2) NOT NULL,
     pets INT(1) NOT NULL,
     petsPref INT(1) NOT NULL,
     smoking INT(1) NOT NULL,

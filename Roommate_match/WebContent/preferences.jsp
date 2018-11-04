@@ -31,7 +31,7 @@
 						<input type="text" name="major" class="studentQ" />
 						
 						<h3 class="studentQ preferenceLabel">Are you in Greek life?</h3>
-						<input type="radio" name="isGreek" class="studentQ" value="1" required /><span class="studentQ">Yes</span>
+						<input type="radio" name="isGreek" class="studentQ" value="1" /><span class="studentQ">Yes</span>
 						<input type="radio" name="isGreek" class="studentQ" value="0" /><span class="studentQ">No</span>
 					</td>
 					<td>
@@ -106,19 +106,10 @@
 						<h3 class="preferenceLabel"> Select the languages you can speak (ctrl+click for multiple)</h3>
 						<select name="languages" multiple required>
 							<option value="english" selected> English </option>
+							<option value="spanish" selected> Spanish </option>
+							<option value="french" selected> French </option>
 							<!-- TODO add languages -->
 						</select>
-					</td>
-				</tr>
-				<tr>
-					<td>
-						<h3 class="preferenceLabel"> Where would you like to search for roommates? </h3>
-						<!-- TODO add location selection -->
-					</td>
-					<td>
-						<h3 class="preferenceLabel"> How far from this location should we search for roommates? (radius)</h3>
-						<input type="range" class="slider" name="radius" min="5" max="100" value="50" oninput="radiusValue.value = radius.value + ' miles'" />
-						<output name="radiusValue" for="radius">50 miles</output>
 					</td>
 				</tr>
 				<tr>
@@ -139,28 +130,69 @@
 				</tr>
 				<tr>
 					<td>
-						<h3 class="preferenceLabel"> Are pets allowed? </h3>
+						<h3 class="preferenceLabel"> Do you own a pet? </h3>
 						<input type="radio" name="pets" value="1" required> Yes
 						<input type="radio" name="pets" value="0"> No
+					</td>
+					<td>
+						<h3 class="preferenceLabel"> Would you be fine with a roommate with a pet? </h3>
+						<input type="radio" name="petsPref" value="1" required> Yes
+						<input type="radio" name="petsPref" value="0"> No
 					</td>
 				</tr>
 				<tr>
 					<td>
-						<h3 class="preferenceLabel"> Is smoking tobacco allowed? </h3>
+						<h3 class="preferenceLabel"> Do you smoke tobacco? </h3>
 						<input type="radio" name="smoking" value="1" required> Yes
 						<input type="radio" name="smoking" value="0"> No
 					</td>
+					<td>
+						<h3 class="preferenceLabel"> Would you be fine with a roommate who smokes? </h3>
+						<input type="radio" name="smokingPref" value="1" required> Yes
+						<input type="radio" name="smokingPref" value="0"> No
+					</td>
+				</tr>
+				<tr>
 					<td>
 						<h3 class="preferenceLabel"> How often do you drink alcohol? </h3>
 						<input type="range" class="slider" name="drinkingFrq" min="0" max="3" value="0" oninput="drinkingFrqValue.value = frequency(drinkingFrq.valueAsNumber)"/>
 						<output name="drinkingFrqValue" for="drinkingFrq"> Never or rarely</output>
 					</td>
+					<td>
+						<h3 class="preferenceLabel"> How often would you be fine with a roommate drinking? </h3>
+						<input type="range" class="slider" name="drinkingPref" min="0" max="3" value="0" oninput="drinkingPrefValue.value = frequency(drinkingPref.valueAsNumber)"/>
+						<output name="drinkingPrefValue" for="drinkingPref"> Never or rarely</output>
+					</td>
 				</tr>
 				<tr>
 					<td>
-						<h3 class="preferenceLabel"> How clean will you keep your living space? </h3>
+						<h3 class="preferenceLabel"> How clean do you keep your living space? </h3>
 						<input type="range" class="slider" name="cleanliness" min="0" max="3" value="2" oninput="cleanlinessValue.value = howClean(cleanliness.valueAsNumber);"/>
 						<output name="cleanlinessValue" for="cleanliness"> Usually clean </output>
+					</td>
+					<td>
+						<h3 class="preferenceLabel"> How clean do you expect your roommate to keep your living space? </h3>
+						<input type="range" class="slider" name="cleanlinessPref" min="0" max="3" value="2" oninput="cleanlinessValue.value = howClean(cleanliness.valueAsNumber);"/>
+						<output name="cleanlinessValue" for="cleanlinessPref"> Usually clean </output>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<h3 class="preferenceLabel"> How clean do you keep your dishes? </h3>
+						<input type="range" class="slider" name="dishes" min="0" max="3" value="2" oninput="dishesValue.value = howClean(dishes.valueAsNumber);"/>
+						<output name="dishesValue" for="dishes"> Usually clean </output>
+					</td>
+					<td>
+						<h3 class="preferenceLabel"> How clean do you expect your roommate to keep your living space? </h3>
+						<input type="range" class="slider" name="dishesPref" min="0" max="3" value="2" oninput="dishesPrefValue.value = howClean(dishesPref.valueAsNumber);"/>
+						<output name="dishesPrefValue" for="dishesPref"> Usually clean </output>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<h3 class="preferenceLabel"> Are you comfortable with sharing your food? </h3>
+						<input type="radio" name="sharingFood" value="1" required> Yes
+						<input type="radio" name="sharingFood" value="0"> No
 					</td>
 					<td>
 						<h3 class="preferenceLabel"> Are you comfortable with sharing your belongings? </h3>
@@ -169,6 +201,7 @@
 					</td>
 				</tr>
 			</table>
+			<input type="hidden" id="userId" name="userId" value=<%=request.getAttribute("userId")%>>
 			<input type="submit" id="submit" value="Save" />
 		</form>
 	</body>

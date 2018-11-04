@@ -26,7 +26,6 @@ public class SignInServlet extends HttpServlet {
     }
 
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		response.getWriter().append("Served at: ").append(request.getContextPath());
 		response.setContentType("text/html"); 
 		String username = request.getParameter("email");
 		String password = request.getParameter("password");
@@ -37,19 +36,21 @@ public class SignInServlet extends HttpServlet {
 		PreparedStatement ps = null; 
 		String obtainedUser = null; 
 		String obtainedPass = null; 
+		int id = -1;
 		try {
 				Class.forName("com.mysql.jdbc.Driver"); 
 				conn = DriverManager.getConnection("jdbc:mysql://localhost/"+ SqlDriver.DATABASE + "?user=root&password=root&useSSL=false");
-				String statement = "SELECT * FROM " + SqlDriver.userTable + " WHERE email LIKE " + "\"" + username + "\"" + 
-						"AND user_password LIKE " + "\"" + password + "\""; 
+				String statement = "SELECT * FROM " + SqlDriver.userTable + " WHERE email = (?)" + 
+						" AND user_password = (?);";  
 				ps = conn.prepareStatement(statement);
+				ps.setString(1, username);
+				ps.setString(2, password);
 				rs = ps.executeQuery();
 				while (rs.next()) {
 					obtainedUser = rs.getString("email"); 
 					obtainedPass = rs.getString("user_password");
+					id = rs.getInt("UserID");
 				}
-				   
-				
 			} catch (SQLException sqle) {
 				System.out.println("sqle: " + sqle.getMessage());
 			} catch (ClassNotFoundException cnfe) {
@@ -70,10 +71,11 @@ public class SignInServlet extends HttpServlet {
 		}
 		String nextpage; 
 		if (obtainedUser == null || obtainedPass == null)
-			nextpage = "error.jsp";
+			nextpage = "/signin.jsp";
 		else
-			nextpage = "home.jsp";
+			nextpage = "/preferences.jsp";
 		RequestDispatcher dispatch = getServletContext().getRequestDispatcher(nextpage); 
+		request.setAttribute("userId", id);
 		dispatch.forward(request, response);
 	}
 }
