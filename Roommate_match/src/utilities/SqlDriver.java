@@ -226,7 +226,7 @@ public class SqlDriver {
 		return returnNum;
 	}
 	
-	public static List<FilledPreferences> getOtherProfiles(int userId){
+	public static List<FilledPreferences> getOtherPreferences(int userId){
 		
 		List<FilledPreferences> otherUsers = new ArrayList<>();
 		Connection conn = null;
@@ -273,11 +273,11 @@ public class SqlDriver {
 	}
 	
 	/**
-	 * Returns filledprofile if user has profile, otherwise null
+	 * Returns FilledProfile if user has profile, otherwise null
 	 * @param userId
 	 * @return
 	 */
-	public static FilledPreferences getSelfProfile(int userId){
+	public static FilledPreferences getSelfPreferences(int userId){
 		Connection conn = null;
 		PreparedStatement st = null; 
 		ResultSet rs = null; 
@@ -320,7 +320,7 @@ public class SqlDriver {
 		return null;	
 	}
 	
-	public static FilledPreferences getGuestProfile(int guestId){
+	public static FilledPreferences getGuestPreferences(int guestId){
 		Connection conn = null;
 		PreparedStatement st = null; 
 		ResultSet rs = null; 
@@ -360,6 +360,45 @@ public class SqlDriver {
 			}
 		}
 		
+		return null;	
+	}
+	
+	public static ProfileInfo getUserProfile(int userId){
+		Connection conn = null;
+		PreparedStatement st = null; 
+		ResultSet rs = null; 
+		
+		try {
+			Class.forName("com.mysql.jdbc.Driver"); 
+			conn = DriverManager.getConnection("jdbc:mysql://localhost/" + DATABASE + "?user=root&password=root&useSSL=false");
+			
+			ProfileInfo profile = new ProfileInfo();
+			st = conn.prepareStatement("SELECT * from " + userTable + " where UserID=?;");
+			st.setInt(1, userId);
+			rs = st.executeQuery();
+			
+			if (rs.next()) {
+				profile.populate(rs);
+				return profile;
+			}
+		} catch (SQLException sqle) {
+			System.out.println("sqle: " + sqle.getMessage());
+		} catch (ClassNotFoundException cnfe) {
+			System.out.println("cnfe: " + cnfe.getMessage());
+		} finally {
+			try {
+				if (rs != null) 
+					rs.close();
+				if (st != null)
+					st.close();
+				if (conn != null)
+					conn.close(); 
+			}
+			catch (SQLException sqle)
+			{
+				System.out.println("sqle closing streams: " +  sqle.getMessage());
+			}
+		}
 		return null;	
 	}
 	
@@ -480,5 +519,4 @@ public class SqlDriver {
 			}
 		}
 	}
-	
 }

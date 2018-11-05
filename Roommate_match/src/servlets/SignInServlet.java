@@ -74,7 +74,7 @@ public class SignInServlet extends HttpServlet {
 		if (obtainedUser == null || obtainedPass == null) {
 			nextpage = "/signin.jsp";
 		}else {
-			FilledPreferences fp = SqlDriver.getSelfProfile(id);
+			FilledPreferences fp = SqlDriver.getSelfPreferences(id);
 			if(fp != null && fp.mapsFilled()) {
 				nextpage = "/MatchServlet";
 			}else if(fp != null) {

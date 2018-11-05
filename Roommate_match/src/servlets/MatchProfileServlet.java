@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import utilities.FilledPreferences;
+import utilities.ProfileInfo;
 import utilities.SqlDriver;
 
 @WebServlet("/MatchProfileServlet")
@@ -26,13 +27,15 @@ public class MatchProfileServlet extends HttpServlet {
 		
 		// Match id should be sent to this servlet depending on which match is clicked
 		int matchId = Integer.parseInt((String)request.getAttribute("matchId"));
-		FilledPreferences matchInfo = SqlDriver.getSelfProfile(matchId);
+		ProfileInfo matchInfo = SqlDriver.getUserProfile(matchId);
+		FilledPreferences matchPreferences = SqlDriver.getSelfPreferences(matchId);
 		
-		// Send match profile to JSP
+		// Send match profile and preferences to JSP
 		RequestDispatcher dispatch = getServletContext().getRequestDispatcher("/matchProfile.jsp");
 		request.setAttribute("userId", selfUserId);
 		request.setAttribute("matchId", matchId);
-		request.setAttribute("matchPreferences", matchInfo);
+		request.setAttribute("matchInfo", matchInfo);
+		request.setAttribute("matchPreferences", matchPreferences);
 		dispatch.forward(request, response);
 	}
 }

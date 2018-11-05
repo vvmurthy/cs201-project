@@ -8,6 +8,15 @@
 		<link rel="stylesheet" type="text/css" href="./CSS/match.css">
 	</head>
 	<body>
-
+		<h1 id="RM">RM</h1>
+		<h2 id="matchesTitle">Matches</h2>
+		<div id="notificationBell"><!-- TODO --></div>
+		<button id="logout"><!-- TODO --></button>
+		
+		<div id="mainScrollable">
+			<%
+			//TODO
+			%>
+		</div>
 	</body>
 </html>

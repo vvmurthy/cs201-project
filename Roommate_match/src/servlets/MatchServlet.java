@@ -29,19 +29,16 @@ public class MatchServlet extends HttpServlet {
 		int selfUserId;
 		FilledPreferences self;
 		if(request.getAttribute("guestId") != null) {
-			self = SqlDriver.getGuestProfile(Integer.parseInt(
+			self = SqlDriver.getGuestPreferences(Integer.parseInt(
 					(String)request.getAttribute("guestId")));
 			selfUserId = -1;
 		}else {
 			selfUserId = Integer.parseInt((String)request.getAttribute("userId"));
-			self = SqlDriver.getSelfProfile(selfUserId);
+			self = SqlDriver.getSelfPreferences(selfUserId);
 		}
 		
-		
-		
 		// Get all other user profiles from SQL
-		List<FilledPreferences> others = SqlDriver.getOtherProfiles(selfUserId);
-		
+		List<FilledPreferences> others = SqlDriver.getOtherPreferences(selfUserId);
 		
 		// Get the historical matches
 		List<ComparisonHolder> historical = SqlDriver.getHistoricalMatches(selfUserId, self);
@@ -61,6 +58,7 @@ public class MatchServlet extends HttpServlet {
 		}
 		
 		// Return the match info to JSP
+		// TODO find a way to send ProfileInfo along with the sorted matches (match page has to display profile picture and bio)
 		RequestDispatcher dispatch = getServletContext().getRequestDispatcher("/match.jsp");
 		dispatch.include(request, response);
 		request.setAttribute("userId", selfUserId);
