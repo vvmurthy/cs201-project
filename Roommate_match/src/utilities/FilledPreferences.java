@@ -181,9 +181,9 @@ public class FilledPreferences {
 		sharingFood = rs.getInt("sharingFood");
 		sharing = rs.getInt("sharing");
 		
-		mapLat = rs.getInt("mapsLat");
-		mapLong = rs.getInt("mapsLong");
-		radius = rs.getInt("mapsRadius");
+		mapLat = rs.getDouble("mapsLat");
+		mapLong = rs.getDouble("mapsLong");
+		radius = rs.getDouble("mapsRadius");
 	}
 	
 	public double compare(FilledPreferences other) {
