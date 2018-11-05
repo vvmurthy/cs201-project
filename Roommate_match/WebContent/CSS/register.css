@@ -29,7 +29,6 @@ table {
     margin-top: 10%;
     margin-bottom: 60%;
     height: 30%;
-	text-align: center;
 	background-color: grey;
 	border-collapse:separate; 
     border-spacing:5px;
@@ -38,25 +37,56 @@ table {
 tr{
 	text-align: center;
 	color: white;
-	width: 400px;
-	height: 40px;
 }
 
 #submit{
 	font-family: 'Antic Didone';
-	color: grey;
+	color: grey; 
 	font-size: 15px;
 	border: none;
 	background: none;
 	
 }
 
+#profilePicture{
+	text-align: right;
+	font-family: 'Antic Didone';
+	padding: 0px;
+	bottom-border: 10px;
+  	background: none;
+}
+
 tr:nth-of-type(6){
 	font-family: 'Antic Didone';
-	align: center;
+	text-align: center;
 	padding: 40px;
-	width: 400px;
-	height: 40px;
 	bottom-border: 10px;
   	background: #FFD700;
 }
+
+table tr:nth-of-type(5) td:nth-of-type(2){
+  background: none;
+  font-family: 'Antic Didone';
+  font-size: 15px;
+}
+
+#logo{
+	position: absolute;
+    top: 8px;
+    left: 16px;
+	font-family: 'Antic Didone';
+	font-size: 40px;
+    color: #FFD700;
+    text-align: left;
+    font-weight: bold;
+}
+
+#copyright{
+	position: absolute;
+    bottom: 8px;
+	font-family: 'Antic Didone';
+	font-size: 12px;
+    color: #FFD700;
+    text-align: center;
+}
+
