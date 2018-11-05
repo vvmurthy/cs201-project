@@ -38,6 +38,10 @@ public class FilledPreferences {
 	int sharingFood;
 	int sharing;
 	
+	double mapLat;
+	double mapLong;
+	double radius;
+	
 	
 	private static final int MIN_TIME_WAKE = 6;
 	private static final int MIN_TIME_SLEEP = 20;
@@ -176,10 +180,16 @@ public class FilledPreferences {
 		
 		sharingFood = rs.getInt("sharingFood");
 		sharing = rs.getInt("sharing");
+		
+		mapLat = rs.getInt("mapsLat");
+		mapLong = rs.getInt("mapsLong");
+		radius = rs.getInt("mapsRadius");
 	}
 	
 	public double compare(FilledPreferences other) {
 		double percent = 100;
+		
+		// Location
 		
 		// Student status
 		
