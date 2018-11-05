@@ -1,6 +1,8 @@
 package utilities;
 
 import java.io.IOException;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.text.ParseException;
 
 import javax.servlet.http.HttpServletRequest;
@@ -116,5 +118,112 @@ public class FilledPreferences {
 			throw new IOException(errors);
 		}
 	}
-
+	
+	public void populate(ResultSet rs) throws SQLException{
+		this.userId = rs.getInt("UserID");
+		
+		isStudent = rs.getInt("isStudent");
+		if(isStudent != 0) {
+			isGreek = rs.getInt("isGreek");
+			major = rs.getString("studentMajor");
+		}else {
+			isGreek = 0;
+			major = "";
+		}
+		
+		weekendWake = Integer.toString(Integer.parseInt(
+				rs.getTime("weekendWake").toString().split(":")[0]) - MIN_TIME_WAKE);
+		
+		weekdayWake = Integer.toString(Integer.parseInt(
+				rs.getTime("weekdayWake").toString().split(":")[0]) - MIN_TIME_WAKE);
+		
+		weekdaySleep = Integer.toString(Integer.parseInt(
+				rs.getTime("weekdaySleep").toString().split(":")[0]) - MIN_TIME_SLEEP);
+		
+		weekendSleep = Integer.toString(Integer.parseInt(
+				rs.getTime("weekendSleep").toString().split(":")[0]) - MIN_TIME_SLEEP);
+		
+		age = rs.getInt("age");
+		
+		guestPref = rs.getInt("guestPref");
+		
+		gender = rs.getInt("gender");
+		genderPref = rs.getInt("genderPref");
+		
+		rentCostPref = rs.getDouble("rentCostPref");
+		
+		allergies = rs.getString("allergies");
+		
+		languages = rs.getString("languages");
+		
+		roomType = rs.getString("roomType");
+		
+		stayLength = rs.getInt("stayLength");
+		pets = rs.getInt("pets");
+		petsPref = rs.getInt("petsPref");
+		
+		smoking = rs.getInt("smoking");
+		smokingPref = rs.getInt("smokingPref");
+		
+		drinkingFreq = rs.getInt("drinkingFrq");
+		drinkingPref = rs.getInt("drinkingPref");
+		
+		cleanliness = rs.getInt("cleanliness");
+		cleanlinessPref = rs.getInt("cleanlinessPref");
+		
+		dishes = rs.getInt("dishes");
+		dishesPref = rs.getInt("dishesPref");
+		
+		sharingFood = rs.getInt("sharingFood");
+		sharing = rs.getInt("sharing");
+	}
+	
+	public double compare(FilledPreferences other) {
+		double percent = 100;
+		
+		// Student status
+		
+		// Greek status 
+		
+		// Major status
+		
+		// Gender
+		
+		// Sleep time weekday
+		
+		// Sleep time weekend
+		
+		// Wake time weekend
+		
+		// Wake time weekday
+		
+		// Dishes
+		
+		// Cleanliness
+		
+		// Drinking
+		
+		// Smoking
+		
+		// Pets
+		
+		// Sharing food
+		
+		// Sharing stuff
+		
+		// Rent cost pref
+		
+		// Room type
+		
+		// Languages
+		
+		// Allergies
+		
+		// stay length
+		
+		// allergies
+		
+		return percent;
+	}
+	
 }
