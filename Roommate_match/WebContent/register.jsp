@@ -4,7 +4,8 @@
 <html>
 	<head>
 		<meta charset="ISO-8859-1">
-		<title>Registration Page</title>
+		<title>- Registration -</title>
+		<link href='https://fonts.googleapis.com/css?family=Antic Didone' rel='stylesheet'>
 		<link rel="stylesheet" type="text/css" href="./CSS/register.css">
 	</head>
 	<body>
@@ -14,31 +15,23 @@
 			<form id = "rForm" method= "post" enctype="multipart/form-data" action="RegistrationServlet">
 			<table style="border:0;">
 				<tr>
-					<td>Name: </td>
-					<td><input type ="text" name = "name" placeholder="Enter Name" id=username value="${param.name}"></td>
+					<td>Name:<input type ="text" name = "name" id=username value="${param.name}" style="float: right;"></td>
 				</tr>
 				<tr>
-					<td>Enter Password: </td>
-					<td><input type="password" name= "password1" placeholder="Enter Password" onClick="$(this).removeClass('placeholderclass')"
-  						class="dateclass placeholderclass" id="passwordOne"></td>
+					<td>Enter Password:<input type="password" name= "password1" id="passwordOne" style="float: right;"></td>
   				</tr>
   				<tr>
-  					<td>Re-Enter Password: </td>
-					<td><input type="password"  name="password2" placeholder="Re-Enter Password" onClick="$(this).removeClass('placeholderclass')"
-  						class="dateclass placeholderclass" id="passwordTwo"></td>
+					<td>Re-Enter Password:<input type="password"  name="password2" id="passwordTwo" style="float: right;"></td>
   				</tr>
   				<tr>
-  					<td>Enter Email: </td>
-					<td><input type="text" name="email" placeholder="Enter Email" onClick="$(this).removeClass('placeholderclass')"
-  						class="dateclass placeholderclass" id="email" value="${param.email}"></td>
+					<td>Enter Email:<input type="text" name="email" id="email" value="${param.email}" style="float: right;"></td>
   				</tr>
   				<tr>
-  				<td>Upload Profile Picture: </td>
-  					<td><input type="file" name="photo" id="profilePicture" size="100" /></td>
+  					<td>Upload Profile Picture: <input type="file" name="photo" id="profilePicture" size="100" style="float: right;"></td>
   				</tr>
   				
   				<tr>
-  					<td><input id="submit" type="submit" value="Register"></td>
+  					<td><input id="submit" type="submit" value="REGISTER"></td>
   				</tr>
   			</table>
 			</form>	
