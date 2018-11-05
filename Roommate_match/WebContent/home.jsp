@@ -6,14 +6,19 @@
 		<meta charset="ISO-8859-1">
 		<title>Roommate Match</title>
 		<link rel="stylesheet" type="text/css" href="./CSS/home.css">
+		<link href='https://fonts.googleapis.com/css?family=Antic Didone' rel='stylesheet'>
 	</head>
 	<body>
+	<div id="logo">RM</div>
+	<div id="content">
 
 		<h1> Welcome to Roommate Match. </h1>
 		<h3> Making the world a better place, one roommate at a time. </h3>
 		<h3> Think local, act global. </h3>
 		
-		<button><a href="signin.jsp"> SIGN IN </a></button>
-		<button><a href="preferences.jsp">CONTINUE AS GUEST</a></button>
+		<button id="signInButton"><a href="signin.jsp"> SIGN IN </a></button>
+		<button id="guestButton"><a href="preferences.jsp">CONTINUE AS GUEST</a></button>
+	</div>
+		<div id="copyright">© Copyright 2018 Roommate Match Corporation</div>
 	</body>
 </html>
