@@ -61,7 +61,7 @@ public class MatchServlet extends HttpServlet {
 		}
 		
 		// Return the match info to JSP
-		RequestDispatcher dispatch = getServletContext().getRequestDispatcher("/matchProfile.jsp");
+		RequestDispatcher dispatch = getServletContext().getRequestDispatcher("/match.jsp");
 		dispatch.include(request, response);
 		request.setAttribute("userId", selfUserId);
 		request.setAttribute("matches", sorted);

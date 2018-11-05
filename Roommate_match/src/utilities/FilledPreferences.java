@@ -357,6 +357,133 @@ public class FilledPreferences {
 		
 		return Math.max(percent, 0);
 	}
-	
-	
+
+	// Getters added to display matchProfile page
+	public int getUserId() {
+		return userId;
+	}
+
+	public int getIsStudent() {
+		return isStudent;
+	}
+
+	public int getIsGreek() {
+		return isGreek;
+	}
+
+	public String getRoomType() {
+		return roomType;
+	}
+
+	public String getLanguages() {
+		return languages;
+	}
+
+	public String getAllergies() {
+		return allergies;
+	}
+
+	public double getRentCostPref() {
+		return rentCostPref;
+	}
+
+	public int getGenderPref() {
+		return genderPref;
+	}
+
+	public int getGender() {
+		return gender;
+	}
+
+	public int getGuestPref() {
+		return guestPref;
+	}
+
+	public String getWeekendWake() {
+		return weekendWake;
+	}
+
+	public String getWeekendSleep() {
+		return weekendSleep;
+	}
+
+	public String getWeekdayWake() {
+		return weekdayWake;
+	}
+
+	public String getWeekdaySleep() {
+		return weekdaySleep;
+	}
+
+	public int getAge() {
+		return age;
+	}
+
+	public int getStayLength() {
+		return stayLength;
+	}
+
+	public int getPets() {
+		return pets;
+	}
+
+	public int getPetsPref() {
+		return petsPref;
+	}
+
+	public int getSmoking() {
+		return smoking;
+	}
+
+	public int getSmokingPref() {
+		return smokingPref;
+	}
+
+	public int getDrinkingFreq() {
+		return drinkingFreq;
+	}
+
+	public int getDrinkingPref() {
+		return drinkingPref;
+	}
+
+	public int getCleanliness() {
+		return cleanliness;
+	}
+
+	public int getCleanlinessPref() {
+		return cleanlinessPref;
+	}
+
+	public int getDishes() {
+		return dishes;
+	}
+
+	public int getDishesPref() {
+		return dishesPref;
+	}
+
+	public int getSharingFood() {
+		return sharingFood;
+	}
+
+	public int getSharing() {
+		return sharing;
+	}
+
+	public double getMapLat() {
+		return mapLat;
+	}
+
+	public double getMapLong() {
+		return mapLong;
+	}
+
+	public double getRadius() {
+		return radius;
+	}
+
+	public String getMajor() {
+		return major;
+	}
 }
