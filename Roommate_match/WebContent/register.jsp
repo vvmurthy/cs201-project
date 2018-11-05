@@ -8,6 +8,8 @@
 		<link rel="stylesheet" type="text/css" href="./CSS/register.css">
 	</head>
 	<body>
+	<h1> - Registration -</h1>
+	<div id="logo">RM</div>
 	<div id="registerForm">
 			<form id = "rForm" method= "post" enctype="multipart/form-data" action="RegistrationServlet">
 			<table style="border:0;">
@@ -36,11 +38,12 @@
   				</tr>
   				
   				<tr>
-  					<td><input type="submit" value="Register"></td>
+  					<td><input id="submit" type="submit" value="Register"></td>
   				</tr>
   			</table>
 			</form>	
 	</div>
+	<div id="copyright">© Copyright 2018 Roommate Match Corporation</div>
 	
 	<%if(request.getAttribute("errors") != null){%>
 			<h1><%out.println(request.getAttribute("errors"));%></h1>
