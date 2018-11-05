@@ -45,8 +45,21 @@ public class FilledPreferences {
 	
 	private static final int MIN_TIME_WAKE = 6;
 	private static final int MIN_TIME_SLEEP = 20;
+	private static final int FIELDS = 22;
+	private static final int DATE_RANGE = 6;
 	
 	String major;
+	
+	// Return if maps fields are filled (user completed filling forms)
+	// or if they are empty
+	public boolean mapsFilled() {
+		return mapLat != 0 && mapLong != 0;
+	}
+	
+	// Set id (for retrieving historical comparisons)
+	public void setId(int id) {
+		this.userId = id;
+	}
 
 	public void populate(HttpServletRequest request, int userId) throws IOException{
 		// Get parameters
@@ -124,8 +137,15 @@ public class FilledPreferences {
 	}
 	
 	public void populate(ResultSet rs) throws SQLException{
-		this.userId = rs.getInt("UserID");
+		populate(rs, false);
+	}
+	
+	public void populate(ResultSet rs, boolean isGuest) throws SQLException{
 		
+		if(!isGuest) {
+			this.userId = rs.getInt("UserID");
+		}
+	
 		isStudent = rs.getInt("isStudent");
 		if(isStudent != 0) {
 			isGreek = rs.getInt("isGreek");
@@ -136,16 +156,20 @@ public class FilledPreferences {
 		}
 		
 		weekendWake = Integer.toString(Integer.parseInt(
-				rs.getTime("weekendWake").toString().split(":")[0]) - MIN_TIME_WAKE);
+				rs.getTime("weekendWake").toString().split(":")[0]) - MIN_TIME_WAKE)
+				+ ":00";
 		
 		weekdayWake = Integer.toString(Integer.parseInt(
-				rs.getTime("weekdayWake").toString().split(":")[0]) - MIN_TIME_WAKE);
+				rs.getTime("weekdayWake").toString().split(":")[0]) - MIN_TIME_WAKE)
+				+ ":00";
 		
 		weekdaySleep = Integer.toString(Integer.parseInt(
-				rs.getTime("weekdaySleep").toString().split(":")[0]) - MIN_TIME_SLEEP);
+				rs.getTime("weekdaySleep").toString().split(":")[0]) - MIN_TIME_SLEEP)
+				+ ":00";
 		
 		weekendSleep = Integer.toString(Integer.parseInt(
-				rs.getTime("weekendSleep").toString().split(":")[0]) - MIN_TIME_SLEEP);
+				rs.getTime("weekendSleep").toString().split(":")[0]) - MIN_TIME_SLEEP)
+				+ ":00";
 		
 		age = rs.getInt("age");
 		
@@ -154,7 +178,7 @@ public class FilledPreferences {
 		gender = rs.getInt("gender");
 		genderPref = rs.getInt("genderPref");
 		
-		rentCostPref = rs.getDouble("rentCostPref");
+		rentCostPref = rs.getDouble("costPref");
 		
 		allergies = rs.getString("allergies");
 		
@@ -162,14 +186,14 @@ public class FilledPreferences {
 		
 		roomType = rs.getString("roomType");
 		
-		stayLength = rs.getInt("stayLength");
+		stayLength = rs.getInt("lengthStay");
 		pets = rs.getInt("pets");
 		petsPref = rs.getInt("petsPref");
 		
 		smoking = rs.getInt("smoking");
 		smokingPref = rs.getInt("smokingPref");
 		
-		drinkingFreq = rs.getInt("drinkingFrq");
+		drinkingFreq = rs.getInt("drinking");
 		drinkingPref = rs.getInt("drinkingPref");
 		
 		cleanliness = rs.getInt("cleanliness");
@@ -179,61 +203,160 @@ public class FilledPreferences {
 		dishesPref = rs.getInt("dishesPref");
 		
 		sharingFood = rs.getInt("sharingFood");
-		sharing = rs.getInt("sharing");
+		sharing = rs.getInt("borrowing");
 		
 		mapLat = rs.getDouble("mapsLat");
 		mapLong = rs.getDouble("mapsLong");
 		radius = rs.getDouble("mapsRadius");
 	}
 	
+	// 1 is they do not match, 0 is they match (coefficient for minus)
+	public int booleanMatch(int field, int otherField, int fieldPref, int otherFieldPref) {
+		if(field > otherFieldPref) {
+			return 1;
+		}else if(otherField > fieldPref) {
+			return 1;
+		}
+		
+		return 0;
+	}
+	
+	// TODO: add guest pref
 	public double compare(FilledPreferences other) {
 		double percent = 100;
 		
 		// Location
+		boolean locationMatch = true;
+		if(Math.sqrt(Math.pow(mapLat - other.mapLat, 2) + 
+				Math.pow(mapLong - other.mapLong, 2)) > 
+		Math.min(radius, other.radius)) {
+			locationMatch = false;
+		}
 		
-		// Student status
+		if(!locationMatch) {
+			percent -= 1.0 / FIELDS;
+		}
 		
-		// Greek status 
+		// Student status -> if both are students, and match on greek life
+		// and are reasonably close in major
+		double match = 100;
+		if(isStudent == 0 && other.isStudent == 0) {
+			match = 100;
+		}else if(Math.abs(isStudent - other.isStudent) != 0) {
+			match = 0;
+		}else { // both are students
+			
+			// check if each word of one is included in the other
+			int total = major.split(" ").length + other.major.split(" ").length;
+			
+			int matches = 0;
+			for(String word : major.split(" ")) {
+				if(other.major.contains(word)) {
+					matches++;
+				}
+			}
+			for(String word : other.major.split(" ")) {
+				if(major.contains(word)) {
+					matches++;
+				}
+			}
+			match -= (match/2 * (1 - (double)matches/total));
+			
+			
+			if(Math.abs(isGreek - other.isGreek) != 0) {
+				match -= 50;
+			}
+		}
+		percent -= (1.0 / FIELDS) * (match / 100.0);
 		
-		// Major status
 		
 		// Gender
+		if(Math.abs(gender - other.gender) != 0) {
+			if(genderPref == 0 || other.genderPref == 0) {
+				percent -= (1.0 / FIELDS);
+			}
+		}
 		
-		// Sleep time weekday
+		// Sleep time weekday TODO check whether this works with 1 time
+		// after midnight and one before
+		int mySleepHour = Integer.parseInt(weekdaySleep.split(":")[0]);
+		int otherSleepHour = Integer.parseInt(other.weekdaySleep.split(":")[0]);
+		percent -= (1.0 / FIELDS) * (Math.abs(mySleepHour- otherSleepHour));
 		
 		// Sleep time weekend
+		mySleepHour = Integer.parseInt(weekendSleep.split(":")[0]);
+		otherSleepHour = Integer.parseInt(other.weekendSleep.split(":")[0]);
+		percent -= (1.0 / FIELDS) * (Math.abs(mySleepHour- otherSleepHour));
 		
 		// Wake time weekend
+		mySleepHour = Integer.parseInt(weekendWake.split(":")[0]);
+		otherSleepHour = Integer.parseInt(other.weekendWake.split(":")[0]);
+		percent -= (1.0 / FIELDS) * (Math.abs(mySleepHour- otherSleepHour));
 		
 		// Wake time weekday
+		mySleepHour = Integer.parseInt(weekdayWake.split(":")[0]);
+		otherSleepHour = Integer.parseInt(other.weekdayWake.split(":")[0]);
+		percent -= (1.0 / FIELDS) * (Math.abs(mySleepHour- otherSleepHour));
 		
-		// Dishes
+		// Dishes + dishes pref
+		percent -= (1.0 / FIELDS) * booleanMatch(dishes, other.dishes, 
+				dishesPref, other.dishesPref);
 		
-		// Cleanliness
+		// Cleanliness + cleanliness pref
+		percent -= (1.0 / FIELDS) * booleanMatch(cleanliness, other.cleanliness, 
+				cleanlinessPref, other.cleanlinessPref);
 		
 		// Drinking
+		percent -= (1.0 / FIELDS) * booleanMatch(drinkingFreq, other.drinkingFreq, 
+				drinkingPref, other.drinkingPref);
 		
 		// Smoking
+		percent -= (1.0 / FIELDS) * booleanMatch(smoking, other.smoking, 
+				smokingPref, other.smokingPref);
 		
 		// Pets
+		percent -= (1.0 / FIELDS) * booleanMatch(pets, other.pets, 
+				petsPref, other.petsPref);
 		
 		// Sharing food
+		if(Math.abs(sharingFood - other.sharingFood) != 0) {
+			percent -= (1.0 / FIELDS);
+		}
 		
 		// Sharing stuff
+		if(Math.abs(sharing - other.sharing) != 0) {
+			percent -= (1.0 / FIELDS);
+		}
 		
 		// Rent cost pref
+		percent -= (1.0 / FIELDS) * Math.abs(rentCostPref - other.rentCostPref
+				) / (rentCostPref + other.rentCostPref);
 		
 		// Room type
+		if(!roomType.equals(other.roomType)) {
+			percent -= (1.0 / FIELDS);
+		}
 		
 		// Languages
+		if(!languages.equals(other.languages)) {
+			percent -= (1.0 / FIELDS);
+		}
 		
 		// Allergies
+		if((allergies == null && other.allergies != null)
+				&& (allergies != null && other.allergies == null)){
+			percent -= (1.0 / FIELDS);
+		}else if(allergies != null && other.allergies != null && 
+				!allergies.equals(other.allergies)) {
+			percent -= (1.0 / FIELDS);
+		}
 		
 		// stay length
+		percent -= (1.0 / FIELDS) * Math.abs(stayLength - other.stayLength
+				) / (stayLength + other.stayLength);
 		
-		// allergies
-		
-		return percent;
+		return Math.max(percent, 0);
 	}
+	
 	
 }

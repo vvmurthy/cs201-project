@@ -26,6 +26,7 @@ CREATE TABLE Preferences (
     weekendWake time NOT NULL,
     genderPref INT(3) NOT NULL,
     gender INT(1) NOT NULL,
+    guestPref INT(1) NOT NULL,
     costPref INT(6) NOT NULL,
     mapsLat double NULL,
     mapsLong double NULL,
@@ -45,6 +46,8 @@ CREATE TABLE Preferences (
     cleanlinessPref INT(1) NOT NULL,
     sharingFood INT(1) NOT NULL,
     borrowing INT(1) NOT NULL,
+    allergies longtext,
+    languages longtext,
     FOREIGN KEY fk1(userID) REFERENCES UserInfo(userID)
 );
 
@@ -57,3 +60,7 @@ CREATE TABLE Matches (
     FOREIGN KEY fk2(userID) REFERENCES UserInfo(userID),
     FOREIGN KEY fk3(matchedID) REFERENCES UserInfo(userID)
 );
+
+
+CREATE TABLE guestPref like preferences;
+ALTER TABLE guestPref DROP COLUMN UserID;

@@ -8,7 +8,6 @@
 		<link rel="stylesheet" type="text/css" href="./CSS/home.css">
 	</head>
 	<body>
-
 		<h1> Welcome to Roommate Match. </h1>
 		<h3> Making the world a better place, one roommate at a time. </h3>
 		<h3> Think local, act global. </h3>

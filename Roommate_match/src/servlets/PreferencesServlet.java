@@ -42,7 +42,11 @@ public class PreferencesServlet extends HttpServlet {
 		
 		// Send to SQL
 		if(userId != -1) {
-			SqlDriver.uploadPreferences(fp, userId);
+			SqlDriver.uploadPreferences(fp, userId, SqlDriver.preferenceTable);
+		}else {
+			int id = SqlDriver.uploadPreferences(fp, -1, SqlDriver.guestTable);
+			request.setAttribute("guestId", id);
+			System.out.println("Uploaded guest");
 		}
 		
 		// Redirect to Map
