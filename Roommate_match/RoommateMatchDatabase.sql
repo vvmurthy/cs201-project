@@ -8,10 +8,7 @@ CREATE TABLE UserInfo(
     email VARCHAR(100) NOT NULL UNIQUE,
     fullname VARCHAR(50) NOT NULL,
     profile_pic_link VARCHAR(250) NOT NULL,
-    user_password VARCHAR(64) NOT NULL,
-    hometown VARCHAR(50),
-    currentTown VARCHAR(50),
-    bio VARCHAR(500)
+    user_password VARCHAR(64) NOT NULL
 );
 
 CREATE TABLE Preferences (
@@ -48,6 +45,8 @@ CREATE TABLE Preferences (
     borrowing INT(1) NOT NULL,
     allergies longtext,
     languages longtext,
+    currentTown VARCHAR(50),
+    bio VARCHAR(500),
     FOREIGN KEY fk1(userID) REFERENCES UserInfo(userID)
 );
 

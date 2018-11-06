@@ -148,10 +148,11 @@ public class SqlDriver {
 					"    cleanliness," + 
 					"    cleanlinessPref," + 
 					"    sharingFood," + 
-					"    borrowing, allergies, languages)";
+					"    borrowing, allergies, languages,"
+					+ "currentTown, bio)";
 			
 			ps += " VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,"
-					+ "?, ?, ?, ?, ?, ?, ?";
+					+ "?, ?, ?, ?, ?, ?, ?, ?, ?";
 			if(tableName.equals(SqlDriver.preferenceTable)) {
 				ps += ", ?);";
 			}else {
@@ -195,6 +196,8 @@ public class SqlDriver {
 			st.setInt(currentIndex++, fp.sharing);
 			st.setString(currentIndex++, fp.allergies);
 			st.setString(currentIndex++, fp.languages);
+			st.setString(currentIndex++, fp.currentTown);
+			st.setString(currentIndex++, fp.bio);
 			if(tableName.equals(SqlDriver.preferenceTable)) {
 				st.execute();
 			}else {
@@ -373,7 +376,7 @@ public class SqlDriver {
 			conn = DriverManager.getConnection("jdbc:mysql://localhost/" + DATABASE + "?user=root&password=root&useSSL=false");
 			
 			ProfileInfo profile = new ProfileInfo();
-			st = conn.prepareStatement("SELECT * from " + userTable + " where UserID=?;");
+			st = conn.prepareStatement("SELECT * from " + userTable + " where UserID = (?);");
 			st.setInt(1, userId);
 			rs = st.executeQuery();
 			
@@ -387,7 +390,6 @@ public class SqlDriver {
 			System.out.println("cnfe: " + cnfe.getMessage());
 		} finally {
 			try {
-				if (rs != null) 
 					rs.close();
 				if (st != null)
 					st.close();
@@ -399,6 +401,7 @@ public class SqlDriver {
 				System.out.println("sqle closing streams: " +  sqle.getMessage());
 			}
 		}
+		System.out.println("Could not find user profile");
 		return null;	
 	}
 	
@@ -462,7 +465,7 @@ public class SqlDriver {
 			conn = DriverManager.getConnection("jdbc:mysql://localhost/" + DATABASE + "?user=root&password=root&useSSL=false");
 			
 			// Get if the match exists
-			String ps = "SELECT * from " + matchesTable + " where UserID = (?) and MatchedID=(?)";
+			String ps = "SELECT * from " + matchesTable + " where UserID = (?) and MatchedID = (?)";
 			st = conn.prepareStatement(ps);
 			st.setInt(1, ch.self.userId);
 			st.setInt(2, ch.other.userId);
@@ -471,13 +474,13 @@ public class SqlDriver {
 			rs = st.executeQuery();
 			if(rs.next()) {
 				st.close();
-				ps = "DELETE * from " + matchesTable + " where UserID = (?) and MatchedID=(?)";
+				ps = "DELETE from " + matchesTable + " where UserID = (?) and MatchedID = (?)";
 				st = conn.prepareStatement(ps);
 				st.setInt(1, ch.self.userId);
 				st.setInt(2, ch.other.userId);
 				st.execute();
 				
-				ps = "DELETE * from " + matchesTable + " where UserID = (?) and MatchedID=(?)";
+				ps = "DELETE from " + matchesTable + " where UserID = (?) and MatchedID = (?)";
 				st = conn.prepareStatement(ps);
 				st.setInt(1, ch.other.userId);
 				st.setInt(2, ch.self.userId);

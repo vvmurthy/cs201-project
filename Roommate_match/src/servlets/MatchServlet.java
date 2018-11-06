@@ -1,5 +1,6 @@
 package servlets;
 
+import java.util.LinkedList;
 import java.util.List;
 import java.util.PriorityQueue;
 import java.io.IOException;
@@ -13,6 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import utilities.ComparisonHolder;
 import utilities.FilledPreferences;
+import utilities.ProfileInfo;
 import utilities.SqlDriver;
 
 @WebServlet("/MatchServlet")
@@ -28,7 +30,7 @@ public class MatchServlet extends HttpServlet {
 		
 		int selfUserId;
 		FilledPreferences self;
-		if(request.getAttribute("guestId") != null) {
+		if(request.getAttribute("guestId") != null && !request.getAttribute("guestId").equals("")) {
 			self = SqlDriver.getGuestPreferences(Integer.parseInt(
 					(String)request.getAttribute("guestId")));
 			selfUserId = -1;
@@ -57,12 +59,19 @@ public class MatchServlet extends HttpServlet {
 			SqlDriver.insertNewMatch(ch);
 		}
 		
+		List<ProfileInfo> profiles = new LinkedList<>();
+		while(!sorted.isEmpty()) {
+			ComparisonHolder ch = sorted.remove();
+			ProfileInfo profile = SqlDriver.getUserProfile(ch.other.getUserId());
+			profile.setComparisonHolder(ch);
+			profiles.add(profile);
+		}
+		
 		// Return the match info to JSP
 		// TODO find a way to send ProfileInfo along with the sorted matches (match page has to display profile picture and bio)
 		RequestDispatcher dispatch = getServletContext().getRequestDispatcher("/match.jsp");
-		dispatch.include(request, response);
 		request.setAttribute("userId", selfUserId);
-		request.setAttribute("matches", sorted);
+		request.setAttribute("profiles", profiles);
 		dispatch.forward(request, response);
 	}
 }

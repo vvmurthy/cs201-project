@@ -42,6 +42,9 @@ public class FilledPreferences {
 	double mapLong;
 	double radius;
 	
+	String currentTown;
+	public String bio;
+	
 	
 	private static final int MIN_TIME_WAKE = 6;
 	private static final int MIN_TIME_SLEEP = 20;
@@ -129,7 +132,10 @@ public class FilledPreferences {
 		dishesPref = Integer.parseInt(request.getParameter("dishesPref"));
 		
 		sharingFood = Integer.parseInt(request.getParameter("sharingFood"));
-		sharing = Integer.parseInt(request.getParameter("sharing"));	
+		sharing = Integer.parseInt(request.getParameter("sharing"));
+		
+		bio = request.getParameter("bio");
+		currentTown = request.getParameter("currentTown");
 		
 		if(!errors.equals("")) {
 			throw new IOException(errors);
@@ -208,6 +214,10 @@ public class FilledPreferences {
 		mapLat = rs.getDouble("mapsLat");
 		mapLong = rs.getDouble("mapsLong");
 		radius = rs.getDouble("mapsRadius");
+		
+		currentTown = rs.getString("currentTown");
+		bio = rs.getString("bio");
+		
 	}
 	
 	// 1 is they do not match, 0 is they match (coefficient for minus)
@@ -485,5 +495,13 @@ public class FilledPreferences {
 
 	public String getMajor() {
 		return major;
+	}
+	
+	public String getBio() {
+		return bio;
+	}
+	
+	public String getCurrentTown() {
+		return currentTown;
 	}
 }

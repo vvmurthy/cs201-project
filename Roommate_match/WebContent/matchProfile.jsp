@@ -20,9 +20,10 @@
 		<button id="logout"><!-- TODO --></button>
 		
 		<div id="mainProfile">
-			<img id="profilePic" src=<%= matchInfo.getProfilePicLink() %> />
-			<button><!-- TODO multi-function button --></button>
-			<p id="bio"> <%= matchInfo.getBio() == null ? "No bio" : matchInfo.getBio() %> </p>
+			<img style="height:100px; width:100px;" src=<%="data:image/jpeg;base64," + matchInfo.getProfilePicLink()%> />
+			<p id="currentTown"> <%= matchPrefs.getCurrentTown() == null ? "No Current town" : matchPrefs.getCurrentTown() %> </p>
+			<p id="bio"> <%= matchPrefs.getBio() == null ? "No bio" : matchPrefs.getBio() %> </p>
+			<p id="bio"> <%= matchInfo.getEmail()%> </p>
 			
 			<div id="scrollableInfo">
 				<!-- TODO add preference output from matchPrefs variable -->
