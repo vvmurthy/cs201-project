@@ -40,7 +40,7 @@ public class SqlDriver {
 			}
 		
 		} catch (SQLException sqle) {
-			System.out.println("sqle: " + sqle.getMessage());
+			sqle.printStackTrace();
 		} catch (ClassNotFoundException cnfe) {
 			System.out.println("cnfe: " + cnfe.getMessage());
 		} finally {
@@ -54,7 +54,7 @@ public class SqlDriver {
 			}
 			catch (SQLException sqle)
 			{
-				System.out.println("sqle closing streams: " +  sqle.getMessage());
+				sqle.printStackTrace();
 			}
 		}
 		return existsEmail;
@@ -85,7 +85,7 @@ public class SqlDriver {
 			}
 		
 		} catch (SQLException sqle) {
-			System.out.println("sqle: " + sqle.getMessage());
+			sqle.printStackTrace();
 		} catch (ClassNotFoundException cnfe) {
 			System.out.println("cnfe: " + cnfe.getMessage());
 		} finally {
@@ -209,7 +209,7 @@ public class SqlDriver {
 			}
 		
 		} catch (SQLException | ParseException sqle) {
-			System.out.println("sqle: " + sqle.getMessage());
+			sqle.printStackTrace();
 		} catch (ClassNotFoundException cnfe) {
 			System.out.println("cnfe: " + cnfe.getMessage());
 		} finally {
@@ -240,7 +240,7 @@ public class SqlDriver {
 			Class.forName("com.mysql.jdbc.Driver"); 
 			conn = DriverManager.getConnection("jdbc:mysql://localhost/" + DATABASE + "?user=root&password=root&useSSL=false");
 			
-			String ps = "SELECT * from preferences where UserID != (?)";
+			String ps = "SELECT * from " + preferenceTable + " where UserID != (?)";
 			st = conn.prepareStatement(ps);
 			st.setInt(1, userId);
 			
@@ -253,7 +253,7 @@ public class SqlDriver {
 
 		
 		} catch (SQLException sqle) {
-			System.out.println("sqle: " + sqle.getMessage());
+			sqle.printStackTrace();
 		} catch (ClassNotFoundException cnfe) {
 			System.out.println("cnfe: " + cnfe.getMessage());
 		} finally {
@@ -302,7 +302,7 @@ public class SqlDriver {
 
 		
 		} catch (SQLException sqle) {
-			System.out.println("sqle: " + sqle.getMessage());
+			sqle.printStackTrace();
 		} catch (ClassNotFoundException cnfe) {
 			System.out.println("cnfe: " + cnfe.getMessage());
 		} finally {
@@ -345,7 +345,7 @@ public class SqlDriver {
 
 		
 		} catch (SQLException sqle) {
-			System.out.println("sqle: " + sqle.getMessage());
+			sqle.printStackTrace();
 		} catch (ClassNotFoundException cnfe) {
 			System.out.println("cnfe: " + cnfe.getMessage());
 		} finally {
@@ -385,7 +385,7 @@ public class SqlDriver {
 				return profile;
 			}
 		} catch (SQLException sqle) {
-			System.out.println("sqle: " + sqle.getMessage());
+			sqle.printStackTrace();
 		} catch (ClassNotFoundException cnfe) {
 			System.out.println("cnfe: " + cnfe.getMessage());
 		} finally {
@@ -435,7 +435,7 @@ public class SqlDriver {
 
 		
 		} catch (SQLException sqle) {
-			System.out.println("sqle: " + sqle.getMessage());
+			sqle.printStackTrace();
 		} catch (ClassNotFoundException cnfe) {
 			System.out.println("cnfe: " + cnfe.getMessage());
 		} finally {
@@ -504,7 +504,7 @@ public class SqlDriver {
 			st.setDouble(3, ch.percent);
 			
 		} catch (SQLException sqle) {
-			System.out.println("sqle: " + sqle.getMessage());
+			sqle.printStackTrace();
 		} catch (ClassNotFoundException cnfe) {
 			System.out.println("cnfe: " + cnfe.getMessage());
 		} finally {
