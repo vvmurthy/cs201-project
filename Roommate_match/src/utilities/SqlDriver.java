@@ -30,7 +30,6 @@ public class SqlDriver {
 			Class.forName("com.mysql.jdbc.Driver"); 
 			conn = DriverManager.getConnection("jdbc:mysql://localhost/"+  DATABASE +"?user=root&password=root&useSSL=false");
 			
-			
 			st = conn.prepareStatement("Select * from " + userTable + " where email=(?)");
 			st.setString(1, email);
 			

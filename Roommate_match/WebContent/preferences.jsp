@@ -78,7 +78,7 @@
 							<option value="" disabled selected> Choose one </option>
 							<option value="0"> Male </option>
 							<option value="1"> Female </option>
-							<option value="3"> Other </option>
+							<option value="2"> Other </option>
 						</select>
 					</td>
 					<td>
