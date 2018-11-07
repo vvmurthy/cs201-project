@@ -12,6 +12,7 @@ h1{
 }
 
 #registerForm{
+	text-align: center;
 	width:50%; 
     margin-left:25%; 
     margin-right:25%;
@@ -22,41 +23,71 @@ h1{
 }
 
 table {
+	position: fixed;
+	left: 445px;
+	top: 120px;
+	horizontal-align: middle;
+	vertical-align: middle;
 	font-family: 'Antic Didone';
-	width:40%; 
-    margin-left:30%; 
-    margin-right:30%;
-    margin-top: 10%;
-    margin-bottom: 60%;
-    height: 30%;
-	text-align: center;
 	background-color: grey;
 	border-collapse:separate; 
     border-spacing:5px;
 }
 
 tr{
-	text-align: center;
-	color: white;
+	
+	float: center;
 	width: 400px;
 	height: 40px;
+	text-align: left;
+	color: white;
 }
 
 #submit{
-	font-family: 'Antic Didone';
 	color: grey;
-	font-size: 15px;
-	border: none;
-	background: none;
+	width: 400px;
+	height: 40px;
+	font-family: 'Antic Didone';
+	font-size: 20px;
+	background: white;
+	border-style: double;
+	border-width: 1px;
+	border-color: #FFD700;
 	
 }
 
-tr:nth-of-type(6){
+#profilePicture{
+	text-align: center;
 	font-family: 'Antic Didone';
-	align: center;
-	padding: 40px;
-	width: 400px;
-	height: 40px;
+	padding: 0px;
 	bottom-border: 10px;
-  	background: #FFD700;
+  	background: none;
 }
+
+table tr:nth-of-type(5) td:nth-of-type(2){
+  background: none;
+  float: right;
+  font-family: 'Antic Didone';
+  font-size: 15px;
+}
+
+#logo{
+	position: absolute;
+    top: 8px;
+    left: 16px;
+	font-family: 'Antic Didone';
+	font-size: 40px;
+    color: #FFD700;
+    text-align: left;
+    font-weight: bold;
+}
+
+#copyright{
+	position: absolute;
+    bottom: 8px;
+	font-family: 'Antic Didone';
+	font-size: 12px;
+    color: #FFD700;
+    text-align: center;
+}
+

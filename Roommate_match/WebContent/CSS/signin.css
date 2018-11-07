@@ -14,6 +14,7 @@ h1{
 }
 
 tr{
+	text-align: center;
 	width: 400px;
 	height: 40px;
 }
@@ -67,8 +68,8 @@ tr:nth-of-type(4){
 }
 
 
-table table tr:nth-of-type(1) td:first-of-type{
-  background: grey;
+table tr:nth-of-type(1) td:first-of-type{
+  background: white;
 }
 table {
 	font-family: 'Antic Didone';
@@ -80,8 +81,8 @@ table {
     height: 30%;
 	text-align: center;
 	background-color: grey;
-	border-collapse:separate; 
-    border-spacing:5px;
+	border-collapse: separate; 
+    border-spacing: 5px;
 }
 
 ::placeholder { 
@@ -100,3 +101,24 @@ table {
 	border-width: thin;
 	border-color: #FFD700;
 }
+
+#logo{
+	position: absolute;
+    top: 8px;
+    left: 16px;
+	font-family: 'Antic Didone';
+	font-size: 40px;
+    color: #FFD700;
+    text-align: left;
+    font-weight: bold;
+}
+
+#copyright{
+	position: absolute;
+    bottom: 8px;
+	font-family: 'Antic Didone';
+	font-size: 12px;
+    color: #FFD700;
+    text-align: center;
+}
+

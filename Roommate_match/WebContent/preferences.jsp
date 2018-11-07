@@ -6,6 +6,7 @@
 		<meta charset="ISO-8859-1">
 		<title>Roommate Match</title>
 		<link rel="stylesheet" type="text/css" href="./CSS/preferences.css">
+		<link href='https://fonts.googleapis.com/css?family=Antic Didone' rel='stylesheet'>
 		<script src="JS/rangeSliderValues.js"></script>
 		<script>
 			function toggleStudentQ(student) {
@@ -18,7 +19,8 @@
 		</script>
 	</head>
 	<body>
-		<h1>Lifestyle Preferences</h1>
+		<div id="logo">RM</div>
+		<h1>- Lifestyle Preferences -</h1>
 		<form action="./PreferencesServlet" method="POST">
 			<table>
 				<tr>
@@ -212,7 +214,8 @@
 				</tr>
 			</table>
 			<input type="hidden" id="userId" name="userId" value=<%=request.getAttribute("userId")%>>
-			<input type="submit" id="submit" value="Save" />
+			<input type="submit" id="submit" value="SAVE" />
 		</form>
+		<div id="copyright">© Copyright 2018 Roommate Match Corporation</div>
 	</body>
 </html>

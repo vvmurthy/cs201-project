@@ -11,6 +11,7 @@
 	<body>
 		<h1> - Sign In -</h1>
 		<form method="POST" action="SignInServlet">
+		<div id="logo">RM</div>
 		<div id="box">
 			<table>
 				<tr>
@@ -28,5 +29,6 @@
 			</table>
 		</div>
 		</form>
+		<div id="copyright">© Copyright 2018 Roommate Match Corporation</div>
 	</body>
 </html>
