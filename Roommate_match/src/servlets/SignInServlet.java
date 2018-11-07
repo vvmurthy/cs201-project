@@ -15,6 +15,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import utilities.FilledPreferences;
 import utilities.SqlDriver;
 
 @WebServlet("/SignInServlet")
@@ -70,10 +71,18 @@ public class SignInServlet extends HttpServlet {
 				}
 		}
 		String nextpage; 
-		if (obtainedUser == null || obtainedPass == null)
+		if (obtainedUser == null || obtainedPass == null) {
 			nextpage = "/signin.jsp";
-		else
-			nextpage = "/preferences.jsp";
+		}else {
+			FilledPreferences fp = SqlDriver.getSelfPreferences(id);
+			if(fp != null && fp.mapsFilled()) {
+				nextpage = "/MatchServlet";
+			}else if(fp != null) {
+				nextpage = "/map.jsp";
+			}else {
+				nextpage = "/preferences.jsp";	
+			}
+		}
 		RequestDispatcher dispatch = getServletContext().getRequestDispatcher(nextpage); 
 		request.setAttribute("userId", id);
 		dispatch.forward(request, response);

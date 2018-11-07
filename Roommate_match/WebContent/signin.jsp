@@ -15,10 +15,10 @@
 		<div id="box">
 			<table>
 				<tr>
-					<td><input id="email" type="text" placeholder="Enter Email" value="${param.email}"></td>
+					<td><input id="email" name="email" type="text" placeholder="Enter Email" value="${param.email}"></td>
 				</tr>
 				<tr>
-					<td><input id="password" type="password" placeholder="Enter Password" value="${param.password}"/>
+					<td><input id="password" name="password" type="password" placeholder="Enter Password" value="${param.password}"/>
 				</tr>
 				<tr>
 					<td><input id="submit" type="submit" value="Log in"/></td>

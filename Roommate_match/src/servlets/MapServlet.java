@@ -1,6 +1,8 @@
 package servlets;
 
 import java.io.IOException;
+
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -15,7 +17,12 @@ public class MapServlet extends HttpServlet {
         super();
     }
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		// Forward to match servlet
+		RequestDispatcher dispatch = getServletContext().getRequestDispatcher("/MatchServlet");
+		request.setAttribute("userId", request.getParameter("userId").replaceAll("[^0-9]", ""));
+		request.setAttribute("guestId", request.getParameter("guestId").replaceAll("[^0-9]", ""));
+		dispatch.forward(request, response);
 	}
 }

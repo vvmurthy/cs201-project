@@ -12,34 +12,24 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import utilities.ComparisonHolder;
 import utilities.FilledPreferences;
 import utilities.ProfileInfo;
 import utilities.RunUserMatch;
 import utilities.SqlDriver;
 
-@WebServlet("/MatchServlet")
-public class MatchServlet extends HttpServlet {
+@WebServlet("/RedirectMatchServlet")
+public class RedirectMatchServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    public MatchServlet() {
+    public RedirectMatchServlet() {
         super();
     }
 
 	protected void service(HttpServletRequest request, 
 			HttpServletResponse response) throws ServletException, IOException {
-		
-		int selfUserId;
 		FilledPreferences self;
-		if(request.getAttribute("guestId") != null && !request.getAttribute("guestId").equals("")) {
-			self = SqlDriver.getGuestPreferences(Integer.parseInt(
-					(String)request.getAttribute("guestId")));
-			selfUserId = -1;
-		}else {
-			selfUserId = Integer.parseInt((String)request.getAttribute("userId"));
-			self = SqlDriver.getSelfPreferences(selfUserId);
-		}
-		
+		int selfUserId = Integer.parseInt(request.getParameter("userId"));
+		self = SqlDriver.getSelfPreferences(selfUserId);
 		// Get the matches
 		List<ProfileInfo> profiles = RunUserMatch.getMatches(self, selfUserId);
 		

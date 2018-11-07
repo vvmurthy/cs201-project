@@ -72,7 +72,8 @@ public class RegistrationServlet extends HttpServlet {
 		Part filePart = request.getPart("photo"); // Retrieves <input type="file" name="file">
 	    InputStream fileContent = filePart.getInputStream();
 		BufferedImage bimg = ImageIO.read(fileContent);
-		final File fl = new File(email + ".png");
+		final File fl = new File(System.getProperty("user.home") + File.separator + email + ".png");
+		System.out.println(fl.getAbsolutePath());
 		if(bimg == null) {
 			errors += "please upload image,";
 		}else {

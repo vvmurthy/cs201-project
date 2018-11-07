@@ -80,7 +80,7 @@
 							<option value="" disabled selected> Choose one </option>
 							<option value="0"> Male </option>
 							<option value="1"> Female </option>
-							<option value="3"> Other </option>
+							<option value="2"> Other </option>
 						</select>
 					</td>
 					<td>
@@ -200,6 +200,16 @@
 						<h3 class="preferenceLabel"> Are you comfortable with sharing your belongings? </h3>
 						<input type="radio" name="sharing" value="1" required> Yes
 						<input type="radio" name="sharing" value="0"> No
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<h3 class="preferenceLabel"> What's your current town? </h3>
+						<input type="text" name="currentTown" value=""/>
+					</td>
+					<td>
+						<h3 class="preferenceLabel"> Share a little about yourself :) </h3>
+						<input type="textarea" rows="5" cols="100" name="bio" value=""/>
 					</td>
 				</tr>
 			</table>

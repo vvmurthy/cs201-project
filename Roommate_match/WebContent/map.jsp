@@ -8,6 +8,11 @@
 		<link rel="stylesheet" type="text/css" href="./CSS/map.css">
 	</head>
 	<body>
+	<form method="POST" action="MapServlet">
+		<input id="submit" type="submit" value="Submit map"/>
+		<input name="userId" type="hidden" value=<%=request.getAttribute("userId")%>/>
+		<input name="guestId" type="hidden" value=<%=request.getAttribute("guestId")%>/>
+	</form>
 
 	</body>
 </html>

@@ -9,9 +9,9 @@
 		<link href='https://fonts.googleapis.com/css?family=Antic Didone' rel='stylesheet'>
 	</head>
 	<body>
+    
 	<div id="logo">RM</div>
 	<div id="content">
-
 		<h1> Welcome to Roommate Match. </h1>
 		<h3> Making the world a better place, one roommate at a time. </h3>
 		<h3> Think local, act global. </h3>
