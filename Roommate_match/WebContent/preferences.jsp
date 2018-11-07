@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=utf-8"
+    pageEncoding="utf-8"%>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -30,7 +30,7 @@
 						<input type="radio" name="isStudent" value="0" onclick="toggleStudentQ(false);"/> No <br />
 
 						<h3 class="studentQ preferenceLabel">What is your major?</h3>
-						<input type="text" name="major" class="studentQ" />
+						<input type="text" name="major" id="major" class="studentQ" />
 						
 						<h3 class="studentQ preferenceLabel">Are you in Greek life?</h3>
 						<input type="radio" name="isGreek" class="studentQ" value="1" /><span class="studentQ">Yes</span>
@@ -94,23 +94,29 @@
 				<tr>
 					<td>
 						<h3 class="preferenceLabel"> Preferred monthly cost of rent </h3>
-						<input type="text" name="rentCostPref" placeholder="$" />
+						<input type="text" name="rentCostPref" id="rentCostPref" placeholder="$" />
 					</td>
 				</tr>
 				<tr>
 					<td>
 						<h3 class="preferenceLabel"> Select any allergies you have (ctrl+click for multiple)</h3>
 						<select name="allergies" multiple>
-							<!-- TODO add allergies -->
+							<option value="shellfish"> Shellfish </option>
+							<option value="dairy"> Dairy </option>
+							<option value="peanuts"> Peanuts </option>
+							<option value="gluten"> Gluten </option>
+							<option value="treenuts"> Tree Nuts </option>
 						</select>
 					</td>
 					<td>
 						<h3 class="preferenceLabel"> Select the languages you can speak (ctrl+click for multiple)</h3>
 						<select name="languages" multiple required>
 							<option value="english" selected> English </option>
-							<option value="spanish" selected> Spanish </option>
-							<option value="french" selected> French </option>
-							<!-- TODO add languages -->
+							<option value="spanish"> Spanish </option>
+							<option value="french"> French </option>
+							<option value="mandarin"> Mandarin </option>
+							<option value="korean"> Korean </option>
+							<option value="german"> German </option>
 						</select>
 					</td>
 				</tr>
@@ -174,8 +180,8 @@
 					</td>
 					<td>
 						<h3 class="preferenceLabel"> How clean do you expect your roommate to keep your living space? </h3>
-						<input type="range" class="slider" name="cleanlinessPref" min="0" max="3" value="2" oninput="cleanlinessValue.value = howClean(cleanliness.valueAsNumber);"/>
-						<output name="cleanlinessValue" for="cleanlinessPref"> Usually clean </output>
+						<input type="range" class="slider" name="cleanlinessPref" min="0" max="3" value="2" oninput="cleanlinessPrefValue.value = howClean(cleanlinessPref.valueAsNumber);"/>
+						<output name="cleanlinessPrefValue" for="cleanlinessPref"> Usually clean </output>
 					</td>
 				</tr>
 				<tr>
@@ -185,7 +191,7 @@
 						<output name="dishesValue" for="dishes"> Usually clean </output>
 					</td>
 					<td>
-						<h3 class="preferenceLabel"> How clean do you expect your roommate to keep your living space? </h3>
+						<h3 class="preferenceLabel"> How clean do you expect your roommate to keep your dishes? </h3>
 						<input type="range" class="slider" name="dishesPref" min="0" max="3" value="2" oninput="dishesPrefValue.value = howClean(dishesPref.valueAsNumber);"/>
 						<output name="dishesPrefValue" for="dishesPref"> Usually clean </output>
 					</td>
@@ -205,11 +211,11 @@
 				<tr>
 					<td>
 						<h3 class="preferenceLabel"> What's your current town? </h3>
-						<input type="text" name="currentTown" value=""/>
+						<input type="text" name="currentTown" id="currentTown" value=""/>
 					</td>
 					<td>
 						<h3 class="preferenceLabel"> Share a little about yourself :) </h3>
-						<input type="textarea" rows="5" cols="100" name="bio" value=""/>
+						<textarea rows="5" cols="20" name="bio" id="bio"></textarea>
 					</td>
 				</tr>
 			</table>

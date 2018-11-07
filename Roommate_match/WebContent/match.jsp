@@ -116,9 +116,14 @@
 		            <div class="media">
 		              <div class="media-left">
 		              <%String url = "MatchProfileServlet?userId=" + (int)request.getAttribute("userId") + "&matchId=" + p.getComparison().other.getUserId(); %>
-		               	<a href=<%=url%>>
-		                	<img class="media-object" style="height:100px; width:100px;" src=<%="data:image/jpeg;base64," + p.getProfilePicLink()%>>
-		         		</a>
+		               	
+		               <%	if(userId != -1){%>
+		               		<a href=<%=url%>>
+		               	<%}%>
+		                <img class="media-object" style="height:100px; width:100px;" src=<%="data:image/jpeg;base64," + p.getProfilePicLink()%>>
+		         		<%if(userId != -1){%>
+		         			</a>
+		              	<%}%>
 		              </div>
 		              <div class="media-body">
 		                <h4 class="media-heading"><%=p.getFullname()%></h4>

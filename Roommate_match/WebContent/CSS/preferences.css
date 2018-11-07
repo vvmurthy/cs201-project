@@ -8,6 +8,25 @@ body {
 	font-weight: 300;
 }
 
+select, #major, #currentTown, #bio, #rentCostPref{
+	font-family: 'Antic Didone';
+	background-color: grey;
+	text-align: center;
+	color: white;
+	font-size: 1.1em;
+	font-weight: normal;
+	border: solid 1px white;
+    border-radius: 2px;
+    opacity: 0.7;
+    -webkit-transition: .2s;
+    transition: opacity .2s;
+}
+
+option{
+	font-size: 1.1em;
+	font-weight: normal;
+}
+
 .slider {
     -webkit-appearance: none;
     width: 100%;
