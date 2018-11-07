@@ -16,9 +16,9 @@ public class ComparisonHolder implements Comparable<ComparisonHolder>{
 	public int compareTo(ComparisonHolder arg0) {
 		// TODO Auto-generated method stub
 		if(percent > arg0.percent) {
-			return 1;
-		}else if(percent < arg0.percent) {
 			return -1;
+		}else if(percent < arg0.percent) {
+			return 1;
 		}
 	
 		return 0;

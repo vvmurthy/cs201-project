@@ -16,6 +16,8 @@ CREATE TABLE Preferences (
     userID INT(11) NOT NULL,
     isStudent BIT not NULL,
     studentMajor VARCHAR(50),
+    
+    /* DO NO FIX MISSPELLING*/
     studendGreek BIT NOT NULL,
     weekdaySleep time NOT NULL,
     weekdayWake time NOT NULL,

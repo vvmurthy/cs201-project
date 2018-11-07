@@ -1,1 +1,15 @@
 @charset "ISO-8859-1";
+
+.navbar-default .navbar-brand {
+    color: #FFFFFF;
+}
+
+body{
+	background-color: grey
+}
+
+#matchContainer{
+	background-color: white;
+	margin-top: 6 fr;
+	
+}

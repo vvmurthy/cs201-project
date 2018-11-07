@@ -154,7 +154,7 @@ public class FilledPreferences {
 	
 		isStudent = rs.getInt("isStudent");
 		if(isStudent != 0) {
-			isGreek = rs.getInt("isGreek");
+			isGreek = rs.getInt("studendGreek");
 			major = rs.getString("studentMajor");
 		}else {
 			isGreek = 0;
@@ -233,7 +233,7 @@ public class FilledPreferences {
 	
 	// TODO: add guest pref
 	public double compare(FilledPreferences other) {
-		double percent = 100;
+		double percent = 1.0;
 		
 		// Location
 		boolean locationMatch = true;
@@ -252,7 +252,7 @@ public class FilledPreferences {
 		double match = 100;
 		if(isStudent == 0 && other.isStudent == 0) {
 			match = 100;
-		}else if(Math.abs(isStudent - other.isStudent) != 0) {
+		}else if(Math.abs(isStudent - other.isStudent) >= 0.1) {
 			match = 0;
 		}else { // both are students
 			
@@ -364,6 +364,8 @@ public class FilledPreferences {
 		// stay length
 		percent -= (1.0 / FIELDS) * Math.abs(stayLength - other.stayLength
 				) / (stayLength + other.stayLength);
+		
+		percent = (percent * 100);
 		
 		return Math.max(percent, 0);
 	}

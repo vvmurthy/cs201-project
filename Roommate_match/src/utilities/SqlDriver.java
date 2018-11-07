@@ -115,6 +115,23 @@ public class SqlDriver {
 			Class.forName("com.mysql.jdbc.Driver"); 
 			conn = DriverManager.getConnection("jdbc:mysql://localhost/" + DATABASE + "?user=root&password=root&useSSL=false");
 			
+			// Delete preferences if they already exist
+			if(tableName.equals(SqlDriver.preferenceTable)) {
+				String select = "SELECT * from " + tableName + " where UserID=(?);";
+				st = conn.prepareStatement(select);
+				st.setInt(1, UserID);
+				rs = st.executeQuery();
+				st.close();
+				
+				if(rs.next()) {
+					String delete = "DELETE from " + tableName + " where UserID=(?);";
+					st = conn.prepareStatement(delete);
+					st.setInt(1, UserID);
+					st.execute();
+					st.close();
+				}
+			}
+		
 			String ps = "INSERT into " + tableName;
 			
 			if(tableName.equals(SqlDriver.preferenceTable)) {

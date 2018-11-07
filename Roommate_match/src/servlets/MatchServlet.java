@@ -15,6 +15,7 @@ import javax.servlet.http.HttpServletResponse;
 import utilities.ComparisonHolder;
 import utilities.FilledPreferences;
 import utilities.ProfileInfo;
+import utilities.RunUserMatch;
 import utilities.SqlDriver;
 
 @WebServlet("/MatchServlet")
@@ -39,33 +40,8 @@ public class MatchServlet extends HttpServlet {
 			self = SqlDriver.getSelfPreferences(selfUserId);
 		}
 		
-		// Get all other user profiles from SQL
-		List<FilledPreferences> others = SqlDriver.getOtherPreferences(selfUserId);
-		
-		// Get the historical matches
-		List<ComparisonHolder> historical = SqlDriver.getHistoricalMatches(selfUserId, self);
-		
-		// compare the matches
-		PriorityQueue<ComparisonHolder> sorted = new PriorityQueue<>();
-		for(FilledPreferences other : others) {
-			double percent = self.compare(other);
-			ComparisonHolder ch = new ComparisonHolder();
-			ch.self = self;
-			ch.other = other;
-			ch.percent = percent;
-			sorted.add(ch);
-			
-			// Remove the old match if applicable and add the new one in 
-			SqlDriver.insertNewMatch(ch);
-		}
-		
-		List<ProfileInfo> profiles = new LinkedList<>();
-		while(!sorted.isEmpty()) {
-			ComparisonHolder ch = sorted.remove();
-			ProfileInfo profile = SqlDriver.getUserProfile(ch.other.getUserId());
-			profile.setComparisonHolder(ch);
-			profiles.add(profile);
-		}
+		// Get the matches
+		List<ProfileInfo> profiles = RunUserMatch.getMatches(self, selfUserId);
 		
 		// Return the match info to JSP
 		// TODO find a way to send ProfileInfo along with the sorted matches (match page has to display profile picture and bio)
