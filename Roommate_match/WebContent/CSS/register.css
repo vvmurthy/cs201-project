@@ -11,6 +11,20 @@ h1{
 	color: white;
 }
 
+#username, #passwordOne, #passwordTwo, #email{
+	font-family: 'Antic Didone';
+	background-color: grey;
+	text-align: center;
+	color: white;
+	font-size: 15px;
+	font-weight: 500;
+	border: solid 1px white;
+    border-radius: 2px;
+    opacity: 0.7;
+    -webkit-transition: .2s;
+    transition: opacity .2s;
+}
+
 #registerForm{
 	text-align: center;
 	width:50%; 

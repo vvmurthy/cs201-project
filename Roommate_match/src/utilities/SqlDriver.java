@@ -120,10 +120,10 @@ public class SqlDriver {
 				st = conn.prepareStatement(select);
 				st.setInt(1, UserID);
 				rs = st.executeQuery();
-				st.close();
 				
 				if(rs.next()) {
 					String delete = "DELETE from " + tableName + " where UserID=(?);";
+					st.close();
 					st = conn.prepareStatement(delete);
 					st.setInt(1, UserID);
 					st.execute();
@@ -538,4 +538,55 @@ public class SqlDriver {
 			}
 		}
 	}
+	
+	public static void insertMaps(int id, double lat, double lng, double radius, boolean user) {
+		Connection conn = null;
+		PreparedStatement st = null; 
+		ResultSet rs = null; 
+		
+		try {
+			Class.forName("com.mysql.jdbc.Driver"); 
+			conn = DriverManager.getConnection("jdbc:mysql://localhost/" + DATABASE + "?user=root&password=root&useSSL=false");
+			
+			String table = null;
+			String idParam = "";
+			if(user) {
+				table = preferenceTable;
+				idParam = "UserID";
+			}else {
+				table = guestTable;
+				idParam = "guestID";
+			}
+			
+			String query  = "UPDATE " + table + " set mapsLat = (?) , mapsLong = (?) , mapsRadius = (?) where " + idParam + " = (?)";
+			st = conn.prepareStatement(query);
+			
+			// insert 
+			st.setDouble(1, lat);
+			st.setDouble(2, lng);
+			st.setDouble(3, radius);
+			st.setInt(4, id);
+			st.execute();
+			
+		} catch (SQLException sqle) {
+			sqle.printStackTrace();
+		} catch (ClassNotFoundException cnfe) {
+			System.out.println("cnfe: " + cnfe.getMessage());
+		} finally {
+			try {
+				if (rs != null) 
+					rs.close();
+				if (st != null)
+					st.close();
+				if (conn != null)
+					conn.close(); 
+			}
+			catch (SQLException sqle)
+			{
+				System.out.println("sqle closing streams: " +  sqle.getMessage());
+			}
+		}
+	}
+	
+	
 }

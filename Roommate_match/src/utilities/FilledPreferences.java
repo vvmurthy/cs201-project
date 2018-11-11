@@ -244,7 +244,7 @@ public class FilledPreferences {
 		}
 		
 		if(!locationMatch) {
-			percent -= 1.0 / FIELDS;
+			percent -= 0.9;
 		}
 		
 		// Student status -> if both are students, and match on greek life

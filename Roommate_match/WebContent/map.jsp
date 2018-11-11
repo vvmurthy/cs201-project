@@ -11,7 +11,6 @@
 	<body>
 	<div id="logo">RM</div>
 	
-
 	<h2> - Map - </h2>
 	
 	<h3> Place a marker in the general area where you would like to live! </h3> 

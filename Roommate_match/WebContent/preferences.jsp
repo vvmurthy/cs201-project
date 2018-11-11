@@ -16,6 +16,21 @@
 					studentQs[i].style.display = display;
 				}
 			}
+			
+			function initMap(){
+				var autocomplete = new google.maps.places.Autocomplete(
+						document.getElementById("currentTownMaps"));
+
+		        // Set the data fields to return when the user selects a place.
+		        autocomplete.setFields(
+		            ['address_components', 'formatted_address']);
+
+		        autocomplete.addListener('place_changed', function() {
+		          var place = autocomplete.getPlace();
+		          document.getElementById("currentTown").value = autocomplete.getPlace().formatted_address;
+		        });
+			}
+			
 		</script>
 	</head>
 	<body>
@@ -211,7 +226,8 @@
 				<tr>
 					<td>
 						<h3 class="preferenceLabel"> What's your current town? </h3>
-						<input type="text" name="currentTown" id="currentTown" value=""/>
+						<input type="hidden" name="currentTown" id="currentTown" value=""/>
+						<input type="text" name="currentTownMaps" id="currentTownMaps" value=""/>
 					</td>
 					<td>
 						<h3 class="preferenceLabel"> Share a little about yourself :) </h3>
@@ -223,5 +239,7 @@
 			<input type="submit" id="submit" value="SAVE" />
 		</form>
 		<div id="copyright">© Copyright 2018 Roommate Match Corporation</div>
+		<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCZqz7hAmRBQA1kStBOHif9DXVMl-JKII0&libraries=places&callback=initMap"
+        async defer></script>
 	</body>
 </html>

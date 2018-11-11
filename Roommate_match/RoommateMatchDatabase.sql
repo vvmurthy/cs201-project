@@ -29,7 +29,7 @@ CREATE TABLE Preferences (
     costPref INT(6) NOT NULL,
     mapsLat double NULL,
     mapsLong double NULL,
-    mapsRadius INT(11) NULL,
+    mapsRadius double NULL,
     roomType VARCHAR(10) NOT NULL,
     lengthStay INT(3) NOT NULL,
     age INT(2) NOT NULL,
