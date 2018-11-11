@@ -1,8 +1,8 @@
 @charset "ISO-8859-1";
 #map
 {
-	height: 500px;
-	width: 500px; 
+	height: 450px;
+	width: 450px; 
 	
 }
 
@@ -13,9 +13,22 @@ h2 {
 	size: 200px;
 }
 
-#inputButton {
-	padding: 20px;
+.inputButton {
+	margin: 20px;
+	font-family: 'Antic Didone';
+	background-color: grey;
+	text-align: center;
+	color: white;
+	font-size: 1.1em;
+	font-weight: normal;
+	border: solid 1px white;
+    border-radius: 2px;
+    opacity: 0.7;
+    -webkit-transition: .2s;
+    transition: opacity .2s;
 }
+
+
 
 h3, h4{
 	font-family: 'Antic Didone';
@@ -62,9 +75,8 @@ body {
 	border-style: double;
 	border-width: 1px;
 	border-color: #FFD700;
-	position: fixed;
-	bottom: 8px;
-	left: 570px;
+	position: right;
 	display: inline-block;
-	
+	margin-top:10px;
+	margin-bottom:10px;
 }
