@@ -1,7 +1,70 @@
 @charset "ISO-8859-1";
 #map
 {
-	height: 400px;
-	width: 400px; 
+	height: 500px;
+	width: 500px; 
+	
+}
+
+h2 {
+	font-family: 'Antic Didone';
+	text-align: center;
+	color: white;
+	size: 200px;
+}
+
+#inputButton {
+	padding: 20px;
+}
+
+h3, h4{
+	font-family: 'Antic Didone';
+	text-align: center;
+	color: #FFD700;
+	size: 200px;
+	font-weight: 300;
+	
+}
+
+#logo{
+	position: absolute;
+    top: 8px;
+    left: 16px;
+	font-family: 'Antic Didone';
+	font-size: 40px;
+    color: #FFD700;
+    text-align: left;
+    font-weight: bold;
+}
+
+#copyright{
+	position: absolute;
+    bottom: 8px;
+	font-family: 'Antic Didone';
+	font-size: 12px;
+    color: #FFD700;
+    text-align: center;
+}
+
+body {
+	font-family: 'Antic Didone';
+	background-color: grey;
+	text-align: center;
+}
+
+#submit{
+	width: 220px;
+	height: 40px;
+	font-family: 'Antic Didone';
+	font-size: 20px;
+	border: none;
+	background: white;
+	border-style: double;
+	border-width: 1px;
+	border-color: #FFD700;
+	position: fixed;
+	bottom: 8px;
+	left: 570px;
+	display: inline-block;
 	
 }
