@@ -5,20 +5,23 @@
 	<head>
 		<meta charset="ISO-8859-1">
 		<title>Roommate Match</title>
+		<link href='https://fonts.googleapis.com/css?family=Antic Didone' rel='stylesheet'>
 		<link rel="stylesheet" type="text/css" href="./CSS/map.css">
 	</head>
 	<body>
+	<div id="logo">RM</div>
 	<form method="POST" action="MapServlet">
-		<input id="submit" type="submit" value="Submit map"/>
+		<input id="submit" type="submit" value="Submit Map"/>
 		<input name="userId" type="hidden" value=<%=request.getAttribute("userId")%>/>
 		<input name="guestId" type="hidden" value=<%=request.getAttribute("guestId")%>/>
 	</form>
 
-	<h2> MAP </h2>
+	<h2> - Map - </h2>
 	
-	<h3> Place a marker in the general area where you would like to live. You can also set a radius too (in miles) </h3>
+	<h3> Place a marker in the general area where you would like to live! </h3> 
+	<h4> You can also set a radius (in miles). </h4>
 	
-	<input id = "numRad" type="number" step="1" value="1">
+	<input id = "numRad" type="number" step="1" value="1" class="inputButton">
 	<div align = "center"> 
 	<div id="map"></div>
     <script>
@@ -54,14 +57,12 @@
     	}
       
     </script>
-    
-
-
 
     
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCBVrjjpVNHWp0-vvV4ScgqwMl2_arBUwg&callback=initMap"
     async defer></script>
 	</div>
+	<div id="copyright">Â© Copyright 2018 Roommate Match Corporation</div>
 
 		
 	
