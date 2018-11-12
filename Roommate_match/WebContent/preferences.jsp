@@ -22,6 +22,13 @@
 			function initMap(){
 				var autocomplete = new google.maps.places.Autocomplete(
 						document.getElementById("currentTownMaps"));
+				
+				google.maps.event.addDomListener(document.getElementById("currentTownMaps"), 
+						'keydown', function(event) { 
+				    if (event.keyCode === 13) { 
+				        event.preventDefault(); 
+				    }
+				  });
 
 		        // Set the data fields to return when the user selects a place.
 		        autocomplete.setFields(
