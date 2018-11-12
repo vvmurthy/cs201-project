@@ -29,7 +29,7 @@ CREATE TABLE Preferences (
     costPref INT(6) NOT NULL,
     mapsLat double NULL,
     mapsLong double NULL,
-    mapsRadius INT(11) NULL,
+    mapsRadius double NULL,
     roomType VARCHAR(10) NOT NULL,
     lengthStay INT(3) NOT NULL,
     age INT(2) NOT NULL,
@@ -58,10 +58,10 @@ CREATE TABLE Matches (
     userID INT(11) NOT NULL,
 	matchedID INT(11) NOT NULL,
     percentage INT(3) NOT NULL,
-    FOREIGN KEY fk2(userID) REFERENCES UserInfo(userID),
-    FOREIGN KEY fk3(matchedID) REFERENCES UserInfo(userID)
+    FOREIGN KEY fk2(userID) REFERENCES UserInfo(UserID),
+    FOREIGN KEY fk3(matchedID) REFERENCES UserInfo(UserID)
 );
 
 
-CREATE TABLE guestPref like preferences;
+CREATE TABLE guestPref like Preferences;
 ALTER TABLE guestPref DROP COLUMN UserID;

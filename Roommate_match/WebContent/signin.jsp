@@ -24,7 +24,7 @@
 					<td><input id="submit" type="submit" value="Log in"/></td>
 				</tr>
 				<tr>
-					<td><button id="registerButton"><a href="register.jsp"> Not a user? Register </a></button></td>
+					<td><a href = "register.jsp">Not a user? Register </a></td>
 				</tr>
 			</table>
 		</div>

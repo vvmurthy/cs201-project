@@ -15,7 +15,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
 
-import org.apache.commons.validator.routines.EmailValidator;
+
 
 import utilities.SqlDriver;
 
@@ -55,13 +55,9 @@ public class RegistrationServlet extends HttpServlet {
 		if(!password1.equals(password2)) {
 			errors += "passwords do not match,";
 		}
+		
 		if(password1.toLowerCase().equals(password1)) {
 			errors += "password must contain capital letter,";
-		}
-		
-		boolean valid = EmailValidator.getInstance().isValid(email);
-		if(!valid) {
-			errors += "email invalid,";
 		}
 		
 		// Check against SQL to ensure no duplicate email 

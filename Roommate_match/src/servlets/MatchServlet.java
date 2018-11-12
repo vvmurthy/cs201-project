@@ -36,7 +36,11 @@ public class MatchServlet extends HttpServlet {
 					(String)request.getAttribute("guestId")));
 			selfUserId = -1;
 		}else {
-			selfUserId = Integer.parseInt((String)request.getAttribute("userId"));
+			try {
+				selfUserId = Integer.parseInt((String)request.getAttribute("userId"));
+			}catch(ClassCastException e) {
+				selfUserId = (int)request.getAttribute("userId");
+			}
 			self = SqlDriver.getSelfPreferences(selfUserId);
 		}
 		

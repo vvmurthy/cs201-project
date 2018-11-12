@@ -12,7 +12,7 @@ import java.util.Base64;
 
 import javax.imageio.ImageIO;
 
-import org.apache.commons.codec.binary.Base64OutputStream;
+
 
 public class ProfileInfo {
 	int userId;
