@@ -10,6 +10,7 @@
 		<title>Roommate Match</title>
 		
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+		<link href='https://fonts.googleapis.com/css?family=Antic Didone' rel='stylesheet'>
 
 		<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
@@ -25,12 +26,12 @@
 	<body>
 		<nav class="navbar navbar-dark bg-dark justify-content-between" style="background-color:grey!important;">
   			<a class="navbar-brand" href=<%="./RedirectMatchServlet?userId=" + request.getAttribute("userId")%>>RM</a>
-  			<a class="navbar-text"><%=matchInfo.getFullname()%></a>
-  			<button class="btn btn-warning" type="button"><a href="home.jsp">Logout</a></button>
+  			<button class="btnbtn-warning" type="button"><a href="home.jsp">LOGOUT</a></button>
 		</nav>
 		
 		<div id="mainProfile">
-			<img style="height:200px; width:200px;" src=<%="data:image/jpeg;base64," + matchInfo.getProfilePicLink()%> />
+			<h1><%=matchInfo.getFullname()%></h1>
+			<img style="height:200px; width:200px;" id="image" src=<%="data:image/jpeg;base64," + matchInfo.getProfilePicLink()%> />
 			<p id="currentTown"><strong>Current Town: </strong> <%= (matchPrefs.getCurrentTown() == null || matchPrefs.getCurrentTown().equals("")) ? "No Current town" : matchPrefs.getCurrentTown() %> </p>
 			<p id="bio"><strong>Bio: </strong><%= (matchPrefs.getBio() == null || matchPrefs.getBio().equals("")) ? "No bio" : matchPrefs.getBio() %> </p>
 			<p id="email"><strong>Email: </strong><%= matchInfo.getEmail()%> </p>
@@ -89,5 +90,6 @@
 				</ul>
 			</div>
 		</div>
+		<div id="copyright">© Copyright 2018 Roommate Match Corporation</div>
 	</body>
 </html>
