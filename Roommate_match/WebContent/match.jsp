@@ -22,7 +22,7 @@
 			var socket;
 			var data;
 			function connectToServer() {
-				socket = new WebSocket("ws://localhost:8080/Roommate_match/ws");
+				socket = new WebSocket("ws://104.248.221.16:8080/Roommate_match-0.0.1-SNAPSHOT/ws");
 				socket.onopen = function(event) {
 					console.log("connected");
 					sendMessage();
