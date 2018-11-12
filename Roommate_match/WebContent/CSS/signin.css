@@ -13,6 +13,13 @@ h1{
 	size: 200px;
 }
 
+h3{
+	font-family: 'Antic Didone';
+	text-align: center;
+	color: white;
+	size: 20px;
+}
+
 tr{
 	text-align: center;
 	width: 400px;
@@ -96,7 +103,7 @@ table {
 	width:50%; 
     margin-left:25%; 
     margin-right:25%;
-    height: 320px;
+    height: 350px;
 	border-style: dotted;
 	border-width: thin;
 	border-color: #FFD700;

@@ -24,6 +24,36 @@
 		%>
 	</head>
 	<body>
+	
+		<script>
+			var map;
+	    	var marker = null;
+	    	var circle = null;
+	      
+	      function initMap() {
+	        map = new google.maps.Map(document.getElementById("map"), {
+	          center: {lat: <%=(double)matchPrefs.getMapLat()%>, lng: <%=(double)matchPrefs.getMapLong()%>},
+	          zoom: 12
+	        });
+	        
+	        circle = new google.maps.Circle({
+	              strokeColor: '#FF0000',
+	              strokeOpacity: 0.8,
+	              strokeWeight: 2,
+	              fillColor: '#FF0000',
+	              fillOpacity: 0.35,
+	              map: map,
+	              center: {lat: <%=(double)matchPrefs.getMapLat()%> , lng: <%=(double)matchPrefs.getMapLong()%>},
+	              editable : false,
+	              radius: <%=(double)matchPrefs.getRadius() * 1600%>
+	            });
+	        
+	        var width = document.getElementById("mainProfile").width;
+	        debugger;
+	        
+	      }
+		</script>
+	
 		<nav class="navbar navbar-dark bg-dark justify-content-between" style="background-color:grey!important;">
   			<a class="navbar-brand" href=<%="./RedirectMatchServlet?userId=" + request.getAttribute("userId")%>>RM</a>
   			<button class="btnbtn-warning" type="button"><a href="home.jsp">LOGOUT</a></button>
@@ -35,6 +65,9 @@
 			<p id="currentTown"><strong>Current Town: </strong> <%= (matchPrefs.getCurrentTown() == null || matchPrefs.getCurrentTown().equals("")) ? "No Current town" : matchPrefs.getCurrentTown() %> </p>
 			<p id="bio"><strong>Bio: </strong><%= (matchPrefs.getBio() == null || matchPrefs.getBio().equals("")) ? "No bio" : matchPrefs.getBio() %> </p>
 			<p id="email"><strong>Email: </strong><%= matchInfo.getEmail()%> </p>
+			
+			
+			<div id="map"></div>
 			
 			<div id="scrollableInfo">
 				<ul class="list-group list-group-flush">
@@ -91,5 +124,7 @@
 			</div>
 		</div>
 		<div id="copyright">© Copyright 2018 Roommate Match Corporation</div>
+		<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCZqz7hAmRBQA1kStBOHif9DXVMl-JKII0&callback=initMap"
+    async defer></script>
 	</body>
 </html>

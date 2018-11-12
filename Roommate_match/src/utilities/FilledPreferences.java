@@ -73,7 +73,7 @@ public class FilledPreferences {
 		isStudent = Integer.parseInt(request.getParameter("isStudent"));
 		if(isStudent != 0) {
 			isGreek = Integer.parseInt(request.getParameter("isGreek"));
-			major = request.getParameter("studentMajor");
+			major = request.getParameter("major");
 		}else {
 			isGreek = 0;
 			major = "";

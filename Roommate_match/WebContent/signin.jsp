@@ -26,7 +26,15 @@
 				<tr>
 					<td><a href = "register.jsp">Not a user? Register </a></td>
 				</tr>
+				<%if(request.getAttribute("errors") != null){%>
+				<tr><td style="color:white;">
+					<%out.println(request.getAttribute("errors"));%></td>
+				</tr>
+			<%}%>
 			</table>
+			
+			
+			
 		</div>
 		</form>
 		<div id="copyright">© Copyright 2018 Roommate Match Corporation</div>

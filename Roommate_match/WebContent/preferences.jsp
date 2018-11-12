@@ -48,8 +48,8 @@
 						<input type="text" name="major" id="major" class="studentQ" />
 						
 						<h3 class="studentQ preferenceLabel">Are you in Greek life?</h3>
-						<input type="radio" name="isGreek" class="studentQ" value="1" /><span class="studentQ">Yes</span>
-						<input type="radio" name="isGreek" class="studentQ" value="0" /><span class="studentQ">No</span>
+						<input type="radio" name="isGreek" id="isGreek" class="studentQ" value="1" /><span class="studentQ">Yes</span>
+						<input type="radio" name="isGreek" id="isGreek" class="studentQ" value="0" /><span class="studentQ">No</span>
 					</td>
 					<td>
 						<h3 class="preferenceLabel"> What is your age? </h3>

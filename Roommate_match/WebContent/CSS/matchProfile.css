@@ -6,6 +6,17 @@ body {
 	text-align: center;
 }
 
+#map
+{
+	height: 350px;
+	width: 350px;
+	margin-left: 40%;
+}
+
+#mapHolder{
+	display: flex;
+}
+
 .navbar-brand{
 	
 	color: #FFD700;

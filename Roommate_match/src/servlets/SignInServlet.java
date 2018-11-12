@@ -85,6 +85,9 @@ public class SignInServlet extends HttpServlet {
 		}
 		RequestDispatcher dispatch = getServletContext().getRequestDispatcher(nextpage); 
 		request.setAttribute("userId", id);
+		if(obtainedUser == null || obtainedPass == null) {
+			request.setAttribute("errors", "Invalid email or password. Please try again.");
+		}
 		dispatch.forward(request, response);
 	}
 }
