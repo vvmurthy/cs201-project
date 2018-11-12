@@ -37,7 +37,7 @@
           });
       }
       
-      function updateRadiusText(){s
+      function updateRadiusText(){
     	  var radius =  document.getElementById('numRad').value*1600;
     	  document.getElementById("radius").value = document.getElementById('numRad').value;
     	  if(circle != null){

@@ -16,8 +16,8 @@
 		<h3> Making the world a better place, one roommate at a time. </h3>
 		<h3> Think local, act global. </h3>
 		
-		<button id="signInButton"><a href="signin.jsp"> SIGN IN </a></button>
-		<button id="guestButton"><a href="preferences.jsp">CONTINUE AS GUEST</a></button>
+		<button id="signInButton" onclick = "window.location.href='signin.jsp'"> SIGN IN </button>
+		<button id="guestButton" onclick = "window.location.href= 'preferences.jsp'">CONTINUE AS GUEST</button>
 	</div>
 		<div id="copyright">© Copyright 2018 Roommate Match Corporation</div>
 	</body>
