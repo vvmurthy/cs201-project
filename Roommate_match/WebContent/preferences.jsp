@@ -12,8 +12,10 @@
 			function toggleStudentQ(student) {
 				var studentQs = document.getElementsByClassName("studentQ");
 				var display = student==true ? "" : "none";
+				var req = student==true ? true : false;
 				for (var i = 0; i < studentQs.length; i++) {
 					studentQs[i].style.display = display;
+					studentQs[i].required = req;
 				}
 			}
 			
