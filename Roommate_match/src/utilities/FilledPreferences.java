@@ -254,7 +254,7 @@ public class FilledPreferences {
 			match = 100;
 		}else if(Math.abs(isStudent - other.isStudent) >= 0.1) {
 			match = 0;
-		}else { // both are students
+		}else if (major != null && other.major != null) { // both are students
 			
 			// check if each word of one is included in the other
 			int total = major.split(" ").length + other.major.split(" ").length;
