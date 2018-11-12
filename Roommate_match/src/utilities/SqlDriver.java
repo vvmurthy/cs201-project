@@ -555,7 +555,7 @@ public class SqlDriver {
 				idParam = "UserID";
 			}else {
 				table = guestTable;
-				idParam = "guestID";
+				idParam = "preferenceID";
 			}
 			
 			String query  = "UPDATE " + table + " set mapsLat = (?) , mapsLong = (?) , mapsRadius = (?) where " + idParam + " = (?)";
