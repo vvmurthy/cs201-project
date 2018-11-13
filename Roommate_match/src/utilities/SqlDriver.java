@@ -192,8 +192,8 @@ public class SqlDriver {
 			st.setTime(currentIndex++, new java.sql.Time(sdf.parse(fp.weekendSleep).getTime()));
 			st.setTime(currentIndex++, new java.sql.Time(sdf.parse(fp.weekendWake).getTime()));
 			st.setInt(currentIndex++, fp.genderPref);
-			st.setInt(currentIndex++, fp.gender);
 			st.setInt(currentIndex++, fp.guestPref);
+			st.setInt(currentIndex++, fp.gender);
 			st.setDouble(currentIndex++, fp.rentCostPref);
 			st.setString(currentIndex++, fp.roomType);
 			st.setInt(currentIndex++, fp.stayLength);
