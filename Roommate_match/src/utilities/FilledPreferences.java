@@ -283,7 +283,7 @@ public class FilledPreferences {
 		// Gender
 		if(Math.abs(gender - other.gender) != 0) {
 			if(genderPref == 0 || other.genderPref == 0) {
-				percent -= (1.0 / FIELDS);
+				percent -= 1.0;
 			}
 		}
 		
@@ -317,8 +317,9 @@ public class FilledPreferences {
 				cleanlinessPref, other.cleanlinessPref);
 		
 		// Drinking
-		percent -= (1.0 / FIELDS) * booleanMatch(drinkingFreq, other.drinkingFreq, 
-				drinkingPref, other.drinkingPref);
+		percent -= (1.0 / FIELDS) * Math.min(Math.min(drinkingFreq - other.drinkingFreq, 
+				drinkingFreq - other.drinkingPref), Math.min(drinkingPref - other.drinkingFreq,
+						drinkingPref - other.drinkingPref));
 		
 		// Smoking
 		percent -= (1.0 / FIELDS) * booleanMatch(smoking, other.smoking, 
@@ -339,8 +340,8 @@ public class FilledPreferences {
 		}
 		
 		// Rent cost pref
-		percent -= (1.0 / FIELDS) * Math.abs(rentCostPref - other.rentCostPref
-				) / (rentCostPref + other.rentCostPref);
+		percent -= (1.0 / FIELDS) * Math.abs(Math.pow(other.rentCostPref - rentCostPref, 
+				2)) / Math.pow(Math.max(other.rentCostPref, rentCostPref), 2);
 		
 		// Room type
 		if(!roomType.equals(other.roomType)) {
@@ -367,7 +368,7 @@ public class FilledPreferences {
 		
 		percent = (percent * 100);
 		
-		return Math.max(percent, 0);
+		return Math.min(100, Math.max(percent, 0));
 	}
 
 	// Getters added to display matchProfile page
