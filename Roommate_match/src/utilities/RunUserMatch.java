@@ -31,7 +31,10 @@ public class RunUserMatch {
 			sorted.add(ch);
 			
 			// Remove the old match if applicable and add the new one in 
-			SqlDriver.insertNewMatch(ch);
+			// ONLY IF NOT GUEST
+			if(selfUserId != -1) {
+				SqlDriver.insertNewMatch(ch);
+			}
 		}
 		
 		// put only the top 5 matches in the response

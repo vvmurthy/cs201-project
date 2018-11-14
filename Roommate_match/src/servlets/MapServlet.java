@@ -44,7 +44,7 @@ public class MapServlet extends HttpServlet {
 			RequestDispatcher dispatch = getServletContext().getRequestDispatcher("/map.jsp");
 			request.setAttribute("err", "Please add to the map where you want to live.");
 			request.setAttribute("userId", request.getParameter("userId").replaceAll("[^0-9]", ""));
-			request.setAttribute("guestId", request.getParameter("guestId").replaceAll("[^0-9]", ""));
+			request.setAttribute("guestId", guestId);
 			
 			dispatch.forward(request, response);
 			

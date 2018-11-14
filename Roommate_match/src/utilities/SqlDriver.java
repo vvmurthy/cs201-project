@@ -69,7 +69,7 @@ public class SqlDriver {
 			Class.forName("com.mysql.jdbc.Driver"); 
 			conn = DriverManager.getConnection("jdbc:mysql://localhost/" + DATABASE + "?user=root&password=root&useSSL=false");
 			
-			st = conn.prepareStatement("INSERT into "+userTable + "(fullname, email, profile_pic_link, user_password) values (?, ?, ?, ?)",
+			st = conn.prepareStatement("INSERT into " +userTable + "(fullname, email, profile_pic_link, user_password) values (?, ?, ?, ?)",
 					Statement.RETURN_GENERATED_KEYS);
 			st.setString(1, name);
 			st.setString(2, email);
@@ -506,6 +506,7 @@ public class SqlDriver {
 			
 			ps = "INSERT INTO " + matchesTable + " (UserID, MatchedID, percentage) VALUES (?, ?, ?)";
 			st = conn.prepareStatement(ps);
+			System.out.println(ch.self.userId + " matched with " + ch.other.userId);
 			st.setInt(1, ch.self.userId);
 			st.setInt(2, ch.other.userId);
 			st.setDouble(3, ch.percent);

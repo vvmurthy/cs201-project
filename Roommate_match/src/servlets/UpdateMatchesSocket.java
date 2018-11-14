@@ -69,7 +69,9 @@ public class UpdateMatchesSocket {
 	@OnClose
 	public void close(Session session) {
 		System.out.println("Disconnecting!");
+		int index = sessionVector.indexOf(session);
 		sessionVector.remove(session);
+		UserIds.remove(index);
 	}
 	
 	@OnError
