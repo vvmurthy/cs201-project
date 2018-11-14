@@ -26,12 +26,28 @@ public class MapServlet extends HttpServlet {
 		boolean user = true;
 		
 		// insert guest
-		if(!request.getParameter("guestId").equals("null/") && !request.getParameter("guestId").equals("")) {
-			id = Integer.parseInt(request.getParameter("guestId").replaceAll("[^0-9]", ""));
+		String guestId = request.getParameter("guestId").replaceAll("[^0-9]", "");
+		if(!guestId.equals("null/") && !guestId.equals("")) {
+			id = Integer.parseInt(guestId);
 			user = false;
 		// insert user
 		}else {
 			id = Integer.parseInt(request.getParameter("userId").replaceAll("[^0-9]", ""));
+		}
+		
+		String gottenLat = request.getParameter("lat");
+		String gottenLong = request.getParameter("long");
+		String gottenRad = request.getParameter("radius");
+		if (gottenLat == null || gottenLong == null || gottenRad == null
+				|| gottenLat.equals("") || gottenLong.equals("") || gottenRad.equals(""))
+		{
+			RequestDispatcher dispatch = getServletContext().getRequestDispatcher("/map.jsp");
+			request.setAttribute("err", "Please add to the map where you want to live.");
+			request.setAttribute("userId", request.getParameter("userId").replaceAll("[^0-9]", ""));
+			request.setAttribute("guestId", request.getParameter("guestId").replaceAll("[^0-9]", ""));
+			
+			dispatch.forward(request, response);
+			
 		}
 		
 		double lat = Double.parseDouble(request.getParameter("lat"));
@@ -42,7 +58,7 @@ public class MapServlet extends HttpServlet {
 		// Forward to match servlet
 		RequestDispatcher dispatch = getServletContext().getRequestDispatcher("/MatchServlet");
 		request.setAttribute("userId", request.getParameter("userId").replaceAll("[^0-9]", ""));
-		request.setAttribute("guestId", request.getParameter("guestId").replaceAll("[^0-9]", ""));
+		request.setAttribute("guestId", guestId);
 		dispatch.forward(request, response);
 	}
 }

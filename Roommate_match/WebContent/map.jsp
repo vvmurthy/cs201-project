@@ -16,12 +16,17 @@
 	<h3> Place a marker in the general area where you would like to live! </h3> 
 	<h4> You can also set a radius (in miles). </h4>
 	
+	<% String error = (String)request.getAttribute("err");
+		if (error == null)
+			error = "";
+	%>
+	<h4 style = "color:red"><%=error %></h4>
+	
+	
 	<input id = "numRad" type="number" step="1" value="1" class="inputButton" onchange="updateRadiusText();">
 	<div align = "center"> 
 	<div id="map"></div>
 
-	
-	
     <script>
       var map;
       var marker = null;
