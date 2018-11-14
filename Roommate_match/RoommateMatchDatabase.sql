@@ -30,7 +30,7 @@ CREATE TABLE Preferences (
     mapsLat double NULL,
     mapsLong double NULL,
     mapsRadius double NULL,
-    roomType VARCHAR(10) NOT NULL,
+    roomType longtext NOT NULL,
     lengthStay INT(3) NOT NULL,
     age INT(2) NOT NULL,
     pets INT(1) NOT NULL,
@@ -47,9 +47,9 @@ CREATE TABLE Preferences (
     borrowing INT(1) NOT NULL,
     allergies longtext,
     languages longtext,
-    currentTown VARCHAR(50),
-    bio VARCHAR(500),
-    FOREIGN KEY fk1(userID) REFERENCES UserInfo(userID)
+    currentTown longtext,
+    bio longtext,
+    FOREIGN KEY fk1(userID) REFERENCES UserInfo(UserID)
 );
 
 
