@@ -113,18 +113,18 @@ public class FilledPreferences {
 		allergies = "";
 		if(request.getParameterValues("allergies") != null && request.getParameterValues("allergies").length > 0) {
 			for(String allergy : request.getParameterValues("allergies")) {
-				allergies += allergy + ",";
+				allergies += allergy + ", ";
 			}
-			allergies = allergies.substring(0, roomType.length() - 1);
+			allergies = allergies.substring(0, allergies.length() - 2);
 		}
 		
 		languages = "";
 		if(request.getParameterValues("languages") != null 
 				&& request.getParameterValues("languages").length > 0) {
 			for(String language : request.getParameterValues("languages")) {
-				languages += language + ",";
+				languages += language + ", ";
 			}
-			languages = languages.substring(0, languages.length() - 1);
+			languages = languages.substring(0, languages.length() - 2);
 		}
 		
 		languages = request.getParameter("languages");
@@ -132,9 +132,9 @@ public class FilledPreferences {
 		
 		roomType = "";
 		for(String room : request.getParameterValues("roomType")) {
-			roomType += room + ",";
+			roomType += room + ", ";
 		}
-		roomType = roomType.substring(0, roomType.length() - 1);
+		roomType = roomType.substring(0, roomType.length() - 2);
 		
 		stayLength = Integer.parseInt(request.getParameter("stayLength"));
 		pets = Integer.parseInt(request.getParameter("pets"));
@@ -304,9 +304,12 @@ public class FilledPreferences {
 		// Gender
 		if(Math.abs(gender - other.gender) != 0) {
 			if(genderPref == 0 || other.genderPref == 0) {
-				percent -= 1.0;
+				percent = -100;
 			}
 		}
+		
+		System.out.println("Gender assignment" + Math.abs(gender - other.gender) +
+				" " + (genderPref == 0 || other.genderPref == 0));
 		
 		// Sleep time weekday TODO check whether this works with 1 time
 		// after midnight and one before
@@ -387,6 +390,7 @@ public class FilledPreferences {
 		percent -= (1.0 / FIELDS) * Math.abs(stayLength - other.stayLength
 				) / (stayLength + other.stayLength);
 		
+		percent = Math.max(percent, 0);
 		percent = (percent * 100);
 		
 		return Math.min(100, Math.max(percent, 0));

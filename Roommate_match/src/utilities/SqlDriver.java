@@ -305,7 +305,7 @@ public class SqlDriver {
 			Class.forName("com.mysql.jdbc.Driver"); 
 			conn = DriverManager.getConnection("jdbc:mysql://localhost/" + DATABASE + "?user=root&password=root&useSSL=false");
 			
-			String ps = "SELECT * from " + preferenceTable + " where UserID = (?)";
+			String ps = "SELECT * from " + preferenceTable + " where userID = (?)";
 			st = conn.prepareStatement(ps);
 			st.setInt(1, userId);
 			
