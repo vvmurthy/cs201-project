@@ -12,6 +12,7 @@
 		<title>Roommate Match</title>
 		<!-- Latest compiled and minified CSS -->
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+		<link href='https://fonts.googleapis.com/css?family=Antic Didone' rel='stylesheet'>
 
 		<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
@@ -22,7 +23,7 @@
 			var socket;
 			var data;
 			function connectToServer() {
-				socket = new WebSocket("ws://localhost:8080/Roommate_match/ws");
+				socket = new WebSocket("ws://104.248.221.16:8080/Roommate_match-0.0.1-SNAPSHOT/ws");
 				socket.onopen = function(event) {
 					console.log("connected");
 					sendMessage();
@@ -92,19 +93,20 @@
 	if(userId != -1){
 	%>
 		<body onload="connectToServer();">
+		<h1> - Matches -</h1>
 	<%}else{%>
 		<body>
 	<%}%>
 		<nav class="navbar navbar-dark bg-dark justify-content-between" style="background-color:grey!important;">
-  			<a class="navbar-brand">RM</a>
+  			<a class="navbar-brand"></a>
   			<%
 			if(userId != -1){
 			%>
-				<button class="btn btn-warning" type="button"><a href="home.jsp">Logout</a></button>
+				<button class="btnbtn-warning" id="logout" type="button"><a href="home.jsp">LOGOUT</a></button>
 			<%}%>
   			
 		</nav>
-	
+		<div id="logo">RM</div>
 		<div class="container" id="matchContainer">
 		  	    
 		    <% 
@@ -137,5 +139,6 @@
 		        </div>
 		     <%}%>
 		</div>
+		<div id="copyright">© Copyright 2018 Roommate Match Corporation</div>
 	</body>
 </html>

@@ -12,14 +12,23 @@
 			function toggleStudentQ(student) {
 				var studentQs = document.getElementsByClassName("studentQ");
 				var display = student==true ? "" : "none";
+				var req = student==true ? true : false;
 				for (var i = 0; i < studentQs.length; i++) {
 					studentQs[i].style.display = display;
+					studentQs[i].required = req;
 				}
 			}
 			
 			function initMap(){
 				var autocomplete = new google.maps.places.Autocomplete(
 						document.getElementById("currentTownMaps"));
+				
+				google.maps.event.addDomListener(document.getElementById("currentTownMaps"), 
+						'keydown', function(event) { 
+				    if (event.keyCode === 13) { 
+				        event.preventDefault(); 
+				    }
+				  });
 
 		        // Set the data fields to return when the user selects a place.
 		        autocomplete.setFields(
@@ -48,8 +57,8 @@
 						<input type="text" name="major" id="major" class="studentQ" />
 						
 						<h3 class="studentQ preferenceLabel">Are you in Greek life?</h3>
-						<input type="radio" name="isGreek" class="studentQ" value="1" /><span class="studentQ">Yes</span>
-						<input type="radio" name="isGreek" class="studentQ" value="0" /><span class="studentQ">No</span>
+						<input type="radio" name="isGreek" id="isGreek" class="studentQ" value="1" /><span class="studentQ">Yes</span>
+						<input type="radio" name="isGreek" id="isGreek" class="studentQ" value="0" /><span class="studentQ">No</span>
 					</td>
 					<td>
 						<h3 class="preferenceLabel"> What is your age? </h3>

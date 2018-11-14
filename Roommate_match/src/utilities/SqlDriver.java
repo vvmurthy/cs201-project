@@ -192,8 +192,8 @@ public class SqlDriver {
 			st.setTime(currentIndex++, new java.sql.Time(sdf.parse(fp.weekendSleep).getTime()));
 			st.setTime(currentIndex++, new java.sql.Time(sdf.parse(fp.weekendWake).getTime()));
 			st.setInt(currentIndex++, fp.genderPref);
-			st.setInt(currentIndex++, fp.gender);
 			st.setInt(currentIndex++, fp.guestPref);
+			st.setInt(currentIndex++, fp.gender);
 			st.setDouble(currentIndex++, fp.rentCostPref);
 			st.setString(currentIndex++, fp.roomType);
 			st.setInt(currentIndex++, fp.stayLength);
@@ -305,7 +305,7 @@ public class SqlDriver {
 			Class.forName("com.mysql.jdbc.Driver"); 
 			conn = DriverManager.getConnection("jdbc:mysql://localhost/" + DATABASE + "?user=root&password=root&useSSL=false");
 			
-			String ps = "SELECT * from " + preferenceTable + " where UserID = (?)";
+			String ps = "SELECT * from " + preferenceTable + " where userID = (?)";
 			st = conn.prepareStatement(ps);
 			st.setInt(1, userId);
 			

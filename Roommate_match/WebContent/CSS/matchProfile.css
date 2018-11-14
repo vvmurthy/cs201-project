@@ -1,1 +1,95 @@
 @charset "ISO-8859-1";
+
+body {
+	font-family: 'Antic Didone';
+	background-color: grey;
+	text-align: center;
+}
+
+#map
+{
+	height: 350px;
+	width: 350px;
+	margin-left: 40%;
+}
+
+#mapHolder{
+	display: flex;
+}
+
+.navbar-brand{
+	
+	color: #FFD700;
+	position: absolute;
+    top: 8px;
+    left: 16px;
+	font-family: 'Antic Didone';
+	font-size: 40px;
+    text-align: left;
+    font-weight: bold;
+}
+
+#copyright{
+	position: fixed;
+    bottom: 8px;
+	font-family: 'Antic Didone';
+	font-size: 12px;
+    color: #FFD700;
+    text-align: center;
+}
+
+a {
+    color: grey;
+    text-decoration: none;
+}
+
+a:hover 
+{
+     color:#FFD700; 
+     text-decoration:none; 
+     cursor:pointer;  
+}
+
+.btnbtn-warning
+{
+	color: grey;
+	width: 100px;
+	height: 40px;
+	font-family: 'Antic Didone';
+	font-size: 20px;
+	border: none;
+	background: white;
+	border-style: double;
+	border-width: 1px;
+	border-color: #FFD700;
+	position: fixed;
+  	top: 5px;
+  	right: 10px;
+	
+}
+
+h1{
+	font-family: 'Antic Didone';
+	text-align: center;
+	color: white;
+	size: 40px;
+}
+
+#currentTown, #bio, #email{
+	font-family: 'Antic Didone';
+	color: white;
+}
+
+
+#image{
+	border-style: double;
+	border-width: 1px;
+	border-color: #FFD700;
+	padding: 10px;
+}
+
+li{
+	border-style: dotted;
+	border-width: 1px;
+	border-color: #FFD700;
+}

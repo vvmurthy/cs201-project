@@ -73,7 +73,7 @@ public class FilledPreferences {
 		isStudent = Integer.parseInt(request.getParameter("isStudent"));
 		if(isStudent != 0) {
 			isGreek = Integer.parseInt(request.getParameter("isGreek"));
-			major = request.getParameter("studentMajor");
+			major = request.getParameter("major");
 		}else {
 			isGreek = 0;
 			major = "";
@@ -109,11 +109,32 @@ public class FilledPreferences {
 			errors += "could not parse rent,";
 		}
 		
-		allergies = request.getParameter("allergies");
+		
+		allergies = "";
+		if(request.getParameterValues("allergies") != null && request.getParameterValues("allergies").length > 0) {
+			for(String allergy : request.getParameterValues("allergies")) {
+				allergies += allergy + ", ";
+			}
+			allergies = allergies.substring(0, allergies.length() - 2);
+		}
+		
+		languages = "";
+		if(request.getParameterValues("languages") != null 
+				&& request.getParameterValues("languages").length > 0) {
+			for(String language : request.getParameterValues("languages")) {
+				languages += language + ", ";
+			}
+			languages = languages.substring(0, languages.length() - 2);
+		}
 		
 		languages = request.getParameter("languages");
 		
-		roomType = request.getParameter("roomType");
+		
+		roomType = "";
+		for(String room : request.getParameterValues("roomType")) {
+			roomType += room + ", ";
+		}
+		roomType = roomType.substring(0, roomType.length() - 2);
 		
 		stayLength = Integer.parseInt(request.getParameter("stayLength"));
 		pets = Integer.parseInt(request.getParameter("pets"));
@@ -254,7 +275,7 @@ public class FilledPreferences {
 			match = 100;
 		}else if(Math.abs(isStudent - other.isStudent) >= 0.1) {
 			match = 0;
-		}else { // both are students
+		}else if (major != null && other.major != null) { // both are students
 			
 			// check if each word of one is included in the other
 			int total = major.split(" ").length + other.major.split(" ").length;
@@ -283,9 +304,12 @@ public class FilledPreferences {
 		// Gender
 		if(Math.abs(gender - other.gender) != 0) {
 			if(genderPref == 0 || other.genderPref == 0) {
-				percent -= (1.0 / FIELDS);
+				percent = -100;
 			}
 		}
+		
+		System.out.println("Gender assignment" + Math.abs(gender - other.gender) +
+				" " + (genderPref == 0 || other.genderPref == 0));
 		
 		// Sleep time weekday TODO check whether this works with 1 time
 		// after midnight and one before
@@ -317,8 +341,9 @@ public class FilledPreferences {
 				cleanlinessPref, other.cleanlinessPref);
 		
 		// Drinking
-		percent -= (1.0 / FIELDS) * booleanMatch(drinkingFreq, other.drinkingFreq, 
-				drinkingPref, other.drinkingPref);
+		percent -= (1.0 / FIELDS) * Math.min(Math.min(drinkingFreq - other.drinkingFreq, 
+				drinkingFreq - other.drinkingPref), Math.min(drinkingPref - other.drinkingFreq,
+						drinkingPref - other.drinkingPref));
 		
 		// Smoking
 		percent -= (1.0 / FIELDS) * booleanMatch(smoking, other.smoking, 
@@ -339,8 +364,8 @@ public class FilledPreferences {
 		}
 		
 		// Rent cost pref
-		percent -= (1.0 / FIELDS) * Math.abs(rentCostPref - other.rentCostPref
-				) / (rentCostPref + other.rentCostPref);
+		percent -= (1.0 / FIELDS) * Math.abs(Math.pow(other.rentCostPref - rentCostPref, 
+				2)) / Math.pow(Math.max(other.rentCostPref, rentCostPref), 2);
 		
 		// Room type
 		if(!roomType.equals(other.roomType)) {
@@ -365,9 +390,10 @@ public class FilledPreferences {
 		percent -= (1.0 / FIELDS) * Math.abs(stayLength - other.stayLength
 				) / (stayLength + other.stayLength);
 		
+		percent = Math.max(percent, 0);
 		percent = (percent * 100);
 		
-		return Math.max(percent, 0);
+		return Math.min(100, Math.max(percent, 0));
 	}
 
 	// Getters added to display matchProfile page

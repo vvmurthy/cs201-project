@@ -74,6 +74,7 @@ public class UpdateMatchesSocket {
 	
 	@OnError
 	public void error(Throwable error) {
+		error.printStackTrace();
 		System.out.println("Error!");
 	}
 }
