@@ -109,11 +109,32 @@ public class FilledPreferences {
 			errors += "could not parse rent,";
 		}
 		
-		allergies = request.getParameter("allergies");
+		
+		allergies = "";
+		if(request.getParameterValues("allergies") != null && request.getParameterValues("allergies").length > 0) {
+			for(String allergy : request.getParameterValues("allergies")) {
+				allergies += allergy + ",";
+			}
+			allergies = allergies.substring(0, roomType.length() - 1);
+		}
+		
+		languages = "";
+		if(request.getParameterValues("languages") != null 
+				&& request.getParameterValues("languages").length > 0) {
+			for(String language : request.getParameterValues("languages")) {
+				languages += language + ",";
+			}
+			languages = languages.substring(0, languages.length() - 1);
+		}
 		
 		languages = request.getParameter("languages");
 		
-		roomType = request.getParameter("roomType");
+		
+		roomType = "";
+		for(String room : request.getParameterValues("roomType")) {
+			roomType += room + ",";
+		}
+		roomType = roomType.substring(0, roomType.length() - 1);
 		
 		stayLength = Integer.parseInt(request.getParameter("stayLength"));
 		pets = Integer.parseInt(request.getParameter("pets"));
