@@ -2,7 +2,7 @@
 
 body {
 	font-family: 'Antic Didone';
-	background-color: grey;
+	background-color: #696969;
 	text-align: center;
 }
 
@@ -59,7 +59,7 @@ h3{
 }
 
 a{
-	color: grey;
+	color: #696969;
 	text-decoration: none;
 }
 

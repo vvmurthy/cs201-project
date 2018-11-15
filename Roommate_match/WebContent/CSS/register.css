@@ -2,7 +2,7 @@
 
 body {
 	font-family: 'Antic Didone';
-	background-color: grey;
+	background-color: #36454f;
 	text-align: center;
 }
 
@@ -13,7 +13,7 @@ h1{
 
 #username, #passwordOne, #passwordTwo, #email{
 	font-family: 'Antic Didone';
-	background-color: grey;
+	background-color: #36454f;
 	text-align: center;
 	color: white;
 	font-size: 15px;
@@ -43,7 +43,7 @@ table {
 	horizontal-align: middle;
 	vertical-align: middle;
 	font-family: 'Antic Didone';
-	background-color: grey;
+	background-color: #36454f;
 	border-collapse:separate; 
     border-spacing:5px;
 }
@@ -58,7 +58,7 @@ tr{
 }
 
 #submit{
-	color: grey;
+	color: #36454f;
 	width: 400px;
 	height: 40px;
 	font-family: 'Antic Didone';

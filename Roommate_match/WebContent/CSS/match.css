@@ -5,7 +5,7 @@
 }
 
 body{
-	background-color: grey;
+	background-color: #696969;
 }
 
 #matchContainer{
@@ -36,7 +36,7 @@ body{
 
 .btnbtn-warning
 {
-	color: grey;
+	color: #696969;
 	width: 100px;
 	height: 40px;
 	font-family: 'Antic Didone';
@@ -62,7 +62,7 @@ body{
 	border-style: dotted;
 	border-width: 2px;
 	border-color: #FFD700;
-	background-color: grey;
+	background-color: #696969;
 	height: 105px;
 	
 }

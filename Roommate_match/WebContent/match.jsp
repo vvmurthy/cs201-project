@@ -93,17 +93,13 @@
 	if(userId != -1){
 	%>
 		<body onload="connectToServer();">
-		<h1> - Matches -</h1>
 	<%}else{%>
 		<body>
 	<%}%>
+		<h1> - Matches -</h1>
 		<nav class="navbar navbar-dark bg-dark justify-content-between" style="background-color:grey!important;">
   			<a class="navbar-brand"></a>
-  			<%
-			if(userId != -1){
-			%>
-				<button class="btnbtn-warning" id="logout" type="button"><a href="home.jsp">LOGOUT</a></button>
-			<%}%>
+  			<button class="btnbtn-warning" id="logout" type="button"><a href="home.jsp">LOGOUT</a></button>
   			
 		</nav>
 		<div id="logo">RM</div>
