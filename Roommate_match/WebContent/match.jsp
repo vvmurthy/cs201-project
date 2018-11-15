@@ -132,7 +132,7 @@
 		                <%=p.getComparison().other.getBio()%>
 		              </div>
 		              <div class="media-right">
-		                <%=p.getComparison().percent + "% match"%>
+		                <%=(int)p.getComparison().percent + "% match"%>
 		              </div>
 		            </div>
 		        </div>

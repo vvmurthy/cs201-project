@@ -27,7 +27,7 @@ public class RunUserMatch {
 			ComparisonHolder ch = new ComparisonHolder();
 			ch.self = self;
 			ch.other = other;
-			ch.percent = Math.round(percent  * 100) / 100;;
+			ch.percent = (int)(Math.round(percent  * 100) / 100);
 			sorted.add(ch);
 			
 			// Remove the old match if applicable and add the new one in 

@@ -118,7 +118,9 @@
 				<tr>
 					<td>
 						<h3 class="preferenceLabel"> Preferred monthly cost of rent </h3>
-						<input type="text" name="rentCostPref" id="rentCostPref" placeholder="$" />
+						<input type="text" name="rentCostPref" id="rentCostPref" placeholder="$" 
+						oninvalid="this.setCustomValidity('Invalid rent amount')"
+    					oninput="this.setCustomValidity('')" pattern="^\d+((\.|\,)\d{2})?$" required/>
 					</td>
 				</tr>
 				<tr>

@@ -38,6 +38,7 @@ public class PreferencesServlet extends HttpServlet {
 			request.setAttribute("userId", userId);
 			dispatch.include(request, response);
 			dispatch.forward(request, response);
+			return;
 		}
 		
 		// Send to SQL

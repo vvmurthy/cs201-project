@@ -32,6 +32,26 @@ public class UpdateMatchesSocket {
 	}
 	
 	/**
+	 * Updates matches for a session of user with id
+	 * otherId
+	 * @param s
+	 * @param otherId
+	 */
+	public void updateMatches(Session s, int otherId) throws IOException{
+		// Rerun the matching algo, return new results
+		FilledPreferences self = SqlDriver.getSelfPreferences(otherId);
+		List<ProfileInfo> profiles = RunUserMatch.getMatches(self, otherId);
+		
+		ProfileGsonHolder pg = new ProfileGsonHolder();
+		pg.setProfiles(profiles);
+		
+		Gson g = new Gson();
+		
+		String message = g.toJson(profiles);
+		s.getBasicRemote().sendText(message);
+	}
+	
+	/**
 	 * Get the user's userId (meaning the user just sent it, and is 
 	 * now recently only on matches). Get all userIds of the other,
 	 * currently existing users 
@@ -45,25 +65,23 @@ public class UpdateMatchesSocket {
 			for(int i = 0 ; i < sessionVector.size() ; i++) {
 				Session s = sessionVector.get(i);
 				int otherId = UserIds.get(i);
-				
-				// Rerun the matching algo, return new results
-				FilledPreferences self = SqlDriver.getSelfPreferences(otherId);
-				List<ProfileInfo> profiles = RunUserMatch.getMatches(self, otherId);
-				
-				ProfileGsonHolder pg = new ProfileGsonHolder();
-				pg.setProfiles(profiles);
-				
-				Gson g = new Gson();
-				
-				String message = g.toJson(profiles);
-				s.getBasicRemote().sendText(message);
+				updateMatches(s, otherId);
 			}
 		} catch (IOException ioe) {
 			System.out.println("ioe: " + ioe.getMessage());
+			ioe.printStackTrace();
 			close(session);
 		}
+		
+		// update matches of message user
 		sessionVector.add(session);
 		UserIds.add(Integer.parseInt(userId));
+		try {
+			updateMatches(session, Integer.parseInt(userId));
+		}catch(IOException e) {
+			e.printStackTrace();
+		}
+		
 	}
 	
 	@OnClose

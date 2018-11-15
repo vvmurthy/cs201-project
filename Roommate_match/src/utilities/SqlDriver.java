@@ -495,18 +495,20 @@ public class SqlDriver {
 				st.setInt(1, ch.self.userId);
 				st.setInt(2, ch.other.userId);
 				st.execute();
+				st.close();
 				
 				ps = "DELETE from " + matchesTable + " where UserID = (?) and MatchedID = (?)";
 				st = conn.prepareStatement(ps);
 				st.setInt(1, ch.other.userId);
 				st.setInt(2, ch.self.userId);
 				st.execute();
+				st.close();
 			}
 			
 			
 			ps = "INSERT INTO " + matchesTable + " (UserID, MatchedID, percentage) VALUES (?, ?, ?)";
 			st = conn.prepareStatement(ps);
-			System.out.println(ch.self.userId + " matched with " + ch.other.userId);
+			System.out.println(ch.self.userId + " matched with " + ch.other.userId + " " + ch.percent);
 			st.setInt(1, ch.self.userId);
 			st.setInt(2, ch.other.userId);
 			st.setDouble(3, ch.percent);
