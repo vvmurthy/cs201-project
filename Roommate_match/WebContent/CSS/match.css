@@ -5,7 +5,7 @@
 }
 
 body{
-	background-color: #36454f;
+	background-color: #494949;
 }
 
 #matchContainer{
@@ -62,7 +62,7 @@ body{
 	border-style: dotted;
 	border-width: 2px;
 	border-color: #FFD700;
-	background-color: #36454f;
+	background-color: #494949;
 	height: 105px;
 	
 }

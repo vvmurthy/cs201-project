@@ -10,6 +10,7 @@
 	</head>
 	<body>
     
+    <img src="logo.png" id="logopng" />
 	<div id="logo">RM</div>
 	<div id="content">
 		<h1> Welcome to Roommate Match. </h1>

@@ -2,7 +2,7 @@
 
 body {
 	font-family: 'Antic Didone';
-	background-color: #36454f;
+	background-color: #494949;
 	text-align: center;
 }
 
@@ -42,7 +42,7 @@ tr:nth-of-type(3){
 
 #submit{
 	font-family: 'Antic Didone';
-	color: #36454f;
+	color: #494949;
 	font-size: 15px;
 	border: none;
 	background: none;
@@ -69,7 +69,7 @@ a:hover, a:focus {
 
 tr:nth-of-type(4){
 	font-family: 'Antic Didone';
-	background: #36454f;
+	background: #494949;
     color: #FFD700;
     font-family: 'Antic Didone';
 }
@@ -87,7 +87,7 @@ table {
     margin-bottom: 60%;
     height: 30%;
 	text-align: center;
-	background-color: grey;
+	background-color: #494949;
 	border-collapse: separate; 
     border-spacing: 5px;
 }
