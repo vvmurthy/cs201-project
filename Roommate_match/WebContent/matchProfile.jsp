@@ -87,20 +87,20 @@
 				  <li class="list-group-item"><strong>Room Type: </strong><%=matchPrefs.getRoomType()%></li>
 				  <li class="list-group-item"><strong>Expected length of stay: </strong><%=matchPrefs.getStayLength() + " months"%></li>
 				  
-				  <li class="list-group-item"><strong>Weekday wake up time:</strong><%=IntToStringUtils.morningTimes(Integer.parseInt(matchPrefs.getWeekdayWake().split(":")[0]))%></li>
-				  <li class="list-group-item"><strong>Weekday bedtime:</strong><%=IntToStringUtils.nightTimes(Integer.parseInt(matchPrefs.getWeekdaySleep().split(":")[0]))%></li>
+				  <li class="list-group-item"><strong>Weekday wake up time: </strong><%=IntToStringUtils.morningTimes(Integer.parseInt(matchPrefs.getWeekdayWake().split(":")[0]))%></li>
+				  <li class="list-group-item"><strong>Weekday bedtime: </strong><%=IntToStringUtils.nightTimes(Integer.parseInt(matchPrefs.getWeekdaySleep().split(":")[0]))%></li>
 				  
-				  <li class="list-group-item"><strong>Weekend wake up time:</strong><%=IntToStringUtils.morningTimes(Integer.parseInt(matchPrefs.getWeekendWake().split(":")[0]))%></li>
-				  <li class="list-group-item"><strong>Weekend bedtime:</strong><%=IntToStringUtils.nightTimes(Integer.parseInt(matchPrefs.getWeekendSleep().split(":")[0]))%></li>
+				  <li class="list-group-item"><strong>Weekend wake up time: </strong><%=IntToStringUtils.morningTimes(Integer.parseInt(matchPrefs.getWeekendWake().split(":")[0]))%></li>
+				  <li class="list-group-item"><strong>Weekend bedtime: </strong><%=IntToStringUtils.nightTimes(Integer.parseInt(matchPrefs.getWeekendSleep().split(":")[0]))%></li>
 				  
-				  <li class="list-group-item"><strong>Owns pets?</strong><%=IntToStringUtils.yesNo(matchPrefs.getPets())%></li>
-				  <li class="list-group-item"><strong>Ok with pets?</strong><%=IntToStringUtils.yesNo(matchPrefs.getPetsPref())%></li>
+				  <li class="list-group-item"><strong>Owns pets? </strong><%=IntToStringUtils.yesNo(matchPrefs.getPets())%></li>
+				  <li class="list-group-item"><strong>Ok with pets? </strong><%=IntToStringUtils.yesNo(matchPrefs.getPetsPref())%></li>
 				  
-				  <li class="list-group-item"><strong>Smokes?</strong><%=IntToStringUtils.yesNo(matchPrefs.getSmoking())%></li>
-				  <li class="list-group-item"><strong>Ok with smoking?</strong><%=IntToStringUtils.yesNo(matchPrefs.getSmokingPref())%></li>
+				  <li class="list-group-item"><strong>Smokes? </strong><%=IntToStringUtils.yesNo(matchPrefs.getSmoking())%></li>
+				  <li class="list-group-item"><strong>Ok with smoking? </strong><%=IntToStringUtils.yesNo(matchPrefs.getSmokingPref())%></li>
 				  
-				  <li class="list-group-item"><strong>Owns pets?</strong><%=IntToStringUtils.yesNo(matchPrefs.getPets())%></li>
-				  <li class="list-group-item"><strong>Ok with pets?</strong><%=IntToStringUtils.yesNo(matchPrefs.getPetsPref())%></li>
+				  <li class="list-group-item"><strong>Owns pets? </strong><%=IntToStringUtils.yesNo(matchPrefs.getPets())%></li>
+				  <li class="list-group-item"><strong>Ok with pets? </strong><%=IntToStringUtils.yesNo(matchPrefs.getPetsPref())%></li>
 				  
 				  <li class="list-group-item"><strong>Frequency of Drinking: </strong><%=IntToStringUtils.frequency(matchPrefs.getDrinkingFreq())%></li>
 				  <li class="list-group-item"><strong>Acceptable roommate drinking frequency: </strong><%=IntToStringUtils.frequency(matchPrefs.getDrinkingPref())%></li>
@@ -113,8 +113,8 @@
 				  
 				  <li class="list-group-item"><strong>Ok with guests at this frequency: </strong><%=IntToStringUtils.frequency(matchPrefs.getGuestPref())%></li>
 				  
-				  <li class="list-group-item"><strong>Ok with sharing food?</strong><%=IntToStringUtils.yesNo(matchPrefs.getSharingFood())%></li>
-				  <li class="list-group-item"><strong>Ok with sharing belongings?</strong><%=IntToStringUtils.yesNo(matchPrefs.getSharing())%></li>
+				  <li class="list-group-item"><strong>Ok with sharing food? </strong><%=IntToStringUtils.yesNo(matchPrefs.getSharingFood())%></li>
+				  <li class="list-group-item"><strong>Ok with sharing belongings? </strong><%=IntToStringUtils.yesNo(matchPrefs.getSharing())%></li>
 				  
 				  <li class="list-group-item"><strong>Age: </strong><%=matchPrefs.getAge()%></li>
 				  <li class="list-group-item"><strong>Spoken Languages: </strong><%=matchPrefs.getLanguages()%></li>
