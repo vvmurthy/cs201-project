@@ -54,7 +54,7 @@
 	      }
 		</script>
 	
-		<nav class="navbar navbar-dark bg-dark justify-content-between" style="background-color:grey!important;">
+		<nav class="navbar navbar-dark bg-dark justify-content-between" style="background-color:#494949!important;">
   			<a class="navbar-brand" href=<%="./RedirectMatchServlet?userId=" + request.getAttribute("userId")%>>RM</a>
   			<button class="btnbtn-warning" type="button"><a href="home.jsp">LOGOUT</a></button>
 		</nav>
