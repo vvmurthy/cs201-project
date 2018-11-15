@@ -2,8 +2,27 @@
 
 body {
 	font-family: 'Antic Didone';
-	background-color: #696969;
+	background-color: 	#494949;
 	text-align: center;
+}
+
+#logo{
+	position: absolute;
+    top: 100px;
+    left: 75px;
+	font-family: 'Antic Didone';
+	font-size: 47px;
+    color: #FFD700;
+    text-align: left;
+    font-weight: bold;
+}
+
+#logopng{
+	position: absolute;
+	top: 15px;
+	left: 25px;
+	width: 160px;
+	height: 90px;
 }
 
 h1{

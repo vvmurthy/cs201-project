@@ -2,7 +2,7 @@
 
 body {
 	font-family: 'Antic Didone';
-	background-color: #36454f;
+	background-color: #494949;
 	text-align: center;
 	color: white;
 	font-weight: 300;
@@ -10,7 +10,7 @@ body {
 
 select, #major, #currentTownMaps, #bio, #rentCostPref{
 	font-family: 'Antic Didone';
-	background-color: #36454f;
+	background-color: #494949;
 	text-align: center;
 	color: white;
 	font-size: 1.1em;
@@ -83,7 +83,7 @@ td {
 }
 
 #submit {
-	color: #36454f;
+	color: #494949;
 	width: 100px;
 	height: 40px;
 	font-family: 'Antic Didone';

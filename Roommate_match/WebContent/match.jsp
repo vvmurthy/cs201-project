@@ -97,7 +97,7 @@
 		<body>
 	<%}%>
 		<h1> - Matches -</h1>
-		<nav class="navbar navbar-dark bg-dark justify-content-between" style="background-color:grey!important;">
+		<nav class="navbar navbar-dark bg-dark justify-content-between" style="background-color:#494949!important;">
   			<a class="navbar-brand"></a>
   			<button class="btnbtn-warning" id="logout" type="button"><a href="home.jsp">LOGOUT</a></button>
   			
