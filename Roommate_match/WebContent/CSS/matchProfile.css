@@ -2,7 +2,7 @@
 
 body {
 	font-family: 'Antic Didone';
-	background-color: grey;
+	background-color: #36454f;
 	text-align: center;
 }
 
@@ -39,7 +39,7 @@ body {
 }
 
 a {
-    color: grey;
+    color: #36454f;
     text-decoration: none;
 }
 
@@ -52,7 +52,7 @@ a:hover
 
 .btnbtn-warning
 {
-	color: grey;
+	color: #36454f;
 	width: 100px;
 	height: 40px;
 	font-family: 'Antic Didone';
