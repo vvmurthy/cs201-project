@@ -9,8 +9,7 @@
 		<link href='https://fonts.googleapis.com/css?family=Antic Didone' rel='stylesheet'>
 	</head>
 	<body>
-    
-    <img src="logo.png" id="logopng" />
+  <img src="logo.png" id="logopng" />
 	<div id="logo">RM</div>
 	<div id="content">
 		<h1> Welcome to Roommate Match. </h1>
@@ -20,6 +19,6 @@
 		<button id="signInButton" onclick = "window.location.href='signin.jsp'"> SIGN IN </button>
 		<button id="guestButton" onclick = "window.location.href= 'preferences.jsp'">CONTINUE AS GUEST</button>
 	</div>
-		<div id="copyright">© Copyright 2018 Roommate Match Corporation</div>
+		<div id="copyright">Â© Copyright 2018 Roommate Match Corporation</div>
 	</body>
 </html>
